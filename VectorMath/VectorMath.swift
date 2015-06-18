@@ -56,23 +56,6 @@ struct Vector3 {
         self.y = y
         self.z = z
     }
-
-    var isZero:Bool {
-        return x % 360 == 0 && y % 360 == 0 && z % 360 == 0
-    }
-
-    var isRightAngle:Bool {
-        if x % 360 == 0 && y % 360 == 0 {
-            if z % 90 == 0 {
-                return true
-            }
-        }
-        return false
-    }
-
-    var rx:CGFloat { return x / 180.0 * CGFloat(M_PI) }
-    var ry:CGFloat { return y / 180.0 * CGFloat(M_PI) }
-    var rz:CGFloat { return z / 180.0 * CGFloat(M_PI) }
 }
 
 struct Vector4 {
@@ -360,6 +343,27 @@ extension Vector3: Equatable, Hashable {
     func interpolatedWith(v: Vector3, t: Scalar) -> Vector3 {
         return self + (v - self) * t
     }
+
+    var isZero:Bool {
+        return x % 360 == 0 && y % 360 == 0 && z % 360 == 0
+    }
+
+    var isRightAngle:Bool {
+        if x % 360 == 0 && y % 360 == 0 {
+            if z % 90 == 0 {
+                return true
+            }
+        }
+        return false
+    }
+
+    var isUnit:Bool {
+        return x == 1.0 && y == 1.0 && z == 1.0
+    }
+
+    var rx:CGFloat { return x / 180.0 * CGFloat(M_PI) }
+    var ry:CGFloat { return y / 180.0 * CGFloat(M_PI) }
+    var rz:CGFloat { return z / 180.0 * CGFloat(M_PI) }
 }
 
 prefix func -(v: Vector3) -> Vector3 {
@@ -381,6 +385,11 @@ func *(lhs: Vector3, rhs: Vector3) -> Vector3 {
 func *(lhs: Vector3, rhs: Scalar) -> Vector3 {
     return Vector3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs)
 }
+
+func *= (inout lhs:Vector3, rhs:Vector3) { lhs.x *= rhs.x; lhs.y *= rhs.y; lhs.z *= rhs.z }
+func /= (inout lhs:Vector3, rhs:Vector3) { lhs.x /= rhs.x; lhs.y /= rhs.y; lhs.z /= rhs.z }
+func += (inout lhs:Vector3, rhs:Vector3) { lhs.x += rhs.x; lhs.y += rhs.y; lhs.z += rhs.z }
+func -= (inout lhs:Vector3, rhs:Vector3) { lhs.x -= rhs.x; lhs.y -= rhs.y; lhs.z -= rhs.z }
 
 func *(lhs: Vector3, rhs: Matrix3) -> Vector3 {
     
