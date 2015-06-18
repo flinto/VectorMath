@@ -98,6 +98,24 @@ extension Vector2 {
     }
 }
 
+extension Vector3 {
+    init(_ point:CGPoint) {
+        self.x = point.x
+        self.y = point.y
+        self.z = 0
+    }
+
+    init(_ size:CGSize) {
+        self.x = size.width
+        self.y = size.height
+        self.z = 0
+    }
+
+    func toPoint() -> CGPoint {
+        return CGPointMake(x, y)
+    }
+}
+
 extension Matrix3 {
     
     init(_ m: CGAffineTransform) {
@@ -108,6 +126,7 @@ extension Matrix3 {
             m31: Scalar(m.tx), m32: Scalar(m.ty), m33: 1
         )
     }
+
 }
 
 extension Matrix4 {

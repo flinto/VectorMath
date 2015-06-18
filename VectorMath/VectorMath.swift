@@ -36,17 +36,43 @@ import Foundation
 
 //MARK: Types
 
-typealias Scalar = Float
+typealias Scalar = CGFloat
 
 struct Vector2 {
     var x: Scalar
     var y: Scalar
+    init(x:Scalar = 0, y:Scalar = 0) {
+        self.x = x
+        self.y = y
+    }
 }
 
 struct Vector3 {
     var x: Scalar
     var y: Scalar
     var z: Scalar
+    init(x:Scalar = 0, y:Scalar = 0, z:Scalar = 0) {
+        self.x = x
+        self.y = y
+        self.z = z
+    }
+
+    var isZero:Bool {
+        return x % 360 == 0 && y % 360 == 0 && z % 360 == 0
+    }
+
+    var isRightAngle:Bool {
+        if x % 360 == 0 && y % 360 == 0 {
+            if z % 90 == 0 {
+                return true
+            }
+        }
+        return false
+    }
+
+    var rx:CGFloat { return x / 180.0 * CGFloat(M_PI) }
+    var ry:CGFloat { return y / 180.0 * CGFloat(M_PI) }
+    var rz:CGFloat { return z / 180.0 * CGFloat(M_PI) }
 }
 
 struct Vector4 {
