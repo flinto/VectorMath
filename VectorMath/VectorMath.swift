@@ -898,6 +898,11 @@ extension Matrix4: Equatable, Hashable {
         return [m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44]
     }
     
+    func toFloat() -> [Float] {
+        return [Float(m11), Float(m12), Float(m13), Float(m14), Float(m21), Float(m22), Float(m23), Float(m24),
+            Float(m31), Float(m32), Float(m33), Float(m34), Float(m41), Float(m42), Float(m43), Float(m44)]
+    }
+
     var adjugate: Matrix4 {
         
         var m = Matrix4.Identity
