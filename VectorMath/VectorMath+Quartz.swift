@@ -37,28 +37,28 @@ import QuartzCore
 
 extension CGPoint {
     
-    init(_ v: Vector2) {
+    public init(_ v: Vector2) {
         self.init(x: CGFloat(v.x), y: CGFloat(v.y))
     }
 }
 
 extension CGSize {
     
-    init(_ v: Vector2) {
+    public init(_ v: Vector2) {
         self.init(width: CGFloat(v.x), height: CGFloat(v.y))
     }
 }
 
 extension CGVector {
     
-    init(_ v: Vector2) {
+    public init(_ v: Vector2) {
         self.init(dx: CGFloat(v.x), dy: CGFloat(v.y))
     }
 }
 
 extension CGAffineTransform {
     
-    init(_ m: Matrix3) {
+    public init(_ m: Matrix3) {
         
         self.init(
             a: CGFloat(m.m11), b: CGFloat(m.m12),
@@ -70,7 +70,7 @@ extension CGAffineTransform {
 
 extension CATransform3D {
     
-    init(_ m: Matrix4) {
+    public init(_ m: Matrix4) {
         
         self.init(
             m11: CGFloat(m.m11), m12: CGFloat(m.m12), m13: CGFloat(m.m13), m14: CGFloat(m.m14),
@@ -85,40 +85,40 @@ extension CATransform3D {
 
 extension Vector2 {
     
-    init(_ v: CGPoint) {
+    public init(_ v: CGPoint) {
         self.init(x: Scalar(v.x), y: Scalar(v.y))
     }
     
-    init(_ v: CGSize) {
+    public init(_ v: CGSize) {
         self.init(x: Scalar(v.width), y: Scalar(v.height))
     }
     
-    init(_ v: CGVector) {
+    public init(_ v: CGVector) {
         self.init(x: Scalar(v.dx), y: Scalar(v.dy))
     }
 }
 
 extension Vector3 {
-    init(_ point:CGPoint) {
+    public init(_ point:CGPoint) {
         self.x = point.x
         self.y = point.y
         self.z = 0
     }
 
-    init(_ size:CGSize) {
+    public init(_ size:CGSize) {
         self.x = size.width
         self.y = size.height
         self.z = 0
     }
 
-    func toPoint() -> CGPoint {
+    public func toPoint() -> CGPoint {
         return CGPointMake(x, y)
     }
 }
 
 extension Matrix3 {
     
-    init(_ m: CGAffineTransform) {
+    public init(_ m: CGAffineTransform) {
         
         self.init(
             m11: Scalar(m.a), m12: Scalar(m.b), m13: 0,
@@ -131,7 +131,7 @@ extension Matrix3 {
 
 extension Matrix4 {
     
-    init(_ m: CATransform3D) {
+    public init(_ m: CATransform3D) {
         
         self.init(
             m11: Scalar(m.m11), m12: Scalar(m.m12), m13: Scalar(m.m13), m14: Scalar(m.m14),
