@@ -318,6 +318,12 @@ extension Vector3: Equatable, Hashable {
         y = v[1]
         z = v[2]
     }
+
+    public init(_ v4:Vector4) {
+        x = v4.x
+        y = v4.y
+        z = v4.z
+    }
     
     public func toArray() -> [Scalar] {
         return [x, y, z]
@@ -513,7 +519,14 @@ extension Vector4: Equatable, Hashable {
         z = v[2]
         w = v[3]
     }
-    
+
+    public init(_ v3:Vector3) {
+        x = v3.x
+        y = v3.y
+        z = v3.z
+        w = 1
+    }
+
     public func toArray() -> [Scalar] {
         return [x, y, z, w]
     }
