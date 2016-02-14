@@ -367,9 +367,9 @@ extension Vector3: Equatable, Hashable {
         return x == 1.0 && y == 1.0 && z == 1.0
     }
 
-    public var rx:CGFloat { return x / 180.0 * CGFloat(M_PI) }
-    public var ry:CGFloat { return y / 180.0 * CGFloat(M_PI) }
-    public var rz:CGFloat { return z / 180.0 * CGFloat(M_PI) }
+    public var rx:Scalar { return x / 180.0 * Scalar(M_PI) }
+    public var ry:Scalar { return y / 180.0 * Scalar(M_PI) }
+    public var rz:Scalar { return z / 180.0 * Scalar(M_PI) }
 }
 
 public prefix func -(v: Vector3) -> Vector3 {
