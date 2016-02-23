@@ -1015,6 +1015,43 @@ extension Matrix4: Equatable, Hashable {
         let determinant = determinantForAdjugate(adjugate)
         return adjugate * (1 / determinant)
     }
+
+    public func decompose(callback:(Vector3, Quaternion, Vector3) -> Void) {
+
+        var scale = Vector3(
+            Vector3(m11,m12,m13).length,
+            Vector3(m21,m22,m23).length,
+            Vector3(m31,m32,m33).length
+        )
+
+        // if determine is negative, we need to invert one scale
+        if determinant < 0 {
+            scale.x = -scale.x
+        }
+
+        let translate = Vector3(m41, m42, m43)
+
+        // scale the rotation part
+        var matrix = self
+
+        matrix.m11 /= scale.x
+        matrix.m12 /= scale.x
+        matrix.m13 /= scale.x
+
+        matrix.m21 /= scale.y
+        matrix.m22 /= scale.y
+        matrix.m23 /= scale.y
+
+        matrix.m31 /= scale.z
+        matrix.m32 /= scale.z
+        matrix.m33 /= scale.z
+
+
+        let rotation = Quaternion(rotationMatrix: matrix)
+
+        callback(translate, rotation, scale)
+    }
+
 }
 
 public prefix func -(m: Matrix4) -> Matrix4 {
