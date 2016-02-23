@@ -363,6 +363,10 @@ extension Vector3: Equatable, Hashable {
         return false
     }
 
+    public var is3DTransformed:Bool {
+        return x % 360 == 0 && y % 360 == 0 ? false : true
+    }
+
     public var isUnit:Bool {
         return x == 1.0 && y == 1.0 && z == 1.0
     }
