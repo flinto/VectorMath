@@ -1016,6 +1016,46 @@ extension Matrix4: Equatable, Hashable {
         return adjugate * (1 / determinant)
     }
 
+    public func translate(t:Vector3) -> Matrix4 {
+        return self * Matrix4(translation: t)
+    }
+
+    public func rotate(v:Vector3) -> Matrix4 {
+
+        func rotateX(theta:Scalar) -> Matrix4 {
+            let c = cos(-theta), s = sin(-theta)
+            return Matrix4(
+                1, 0,  0, 0,
+                0, c, -s, 0,
+                0, s,  c, 0,
+                0, 0,  0, 1
+            )
+        }
+        func rotateY(theta:Scalar) -> Matrix4 {
+            let c = cos(-theta), s = sin(-theta)
+            return Matrix4(
+                c, 0, s, 0,
+                0, 1, 0, 0,
+               -s, 0, c, 0,
+                0, 0, 0, 1
+            )
+        }
+        func rotateZ(theta:Scalar) -> Matrix4 {
+            let c = cos(-theta), s = sin(-theta)
+            return Matrix4(
+                c, -s, 0, 0,
+                s,  c, 0, 0,
+                0,  0, 1, 0,
+                0,  0, 0, 1
+            )
+        }
+        return self * rotateX(v.rx) * rotateY(v.ry) * rotateZ(v.rz)
+    }
+
+    public func scale(v:Vector3) -> Matrix4 {
+        return self * Matrix4(scale:v)
+    }
+
     public func decompose(callback:(Vector3, Quaternion, Vector3) -> Void) {
 
         var scale = Vector3(
