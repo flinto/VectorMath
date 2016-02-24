@@ -371,6 +371,18 @@ extension Vector3: Equatable, Hashable {
         return x == 1.0 && y == 1.0 && z == 1.0
     }
 
+    public func clip(minV:Scalar, _ maxV:Scalar) -> Vector3 {
+        var r = self
+        r.clipInPlace(minV, maxV)
+        return r
+    }
+
+    mutating public func clipInPlace(minV:Scalar, _ maxV:Scalar) {
+        x = max(minV, min(maxV, x))
+        y = max(minV, min(maxV, y))
+        z = max(minV, min(maxV, z))
+    }
+
     public var rx:Scalar { return x / 180.0 * Scalar(M_PI) }
     public var ry:Scalar { return y / 180.0 * Scalar(M_PI) }
     public var rz:Scalar { return z / 180.0 * Scalar(M_PI) }
