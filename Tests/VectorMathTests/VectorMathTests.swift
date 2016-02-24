@@ -186,19 +186,25 @@ class Matrix4Tests: XCTestCase {
 
 
     func testTRS() {
-        let r = Vector3(30, 0, 90)
-        let s = Vector3(1, 5.5, 3)
-        let t = Vector3(1, 0, 3)
-        let ct = CATransform3DIdentity.rotate(vector: r).scale(vector:s).translate(vector:t)
-        let m = Matrix4(ct)
+        var r = Vector3(30, 0, 90)
+        var s = Vector3(1, 5.5, 3)
+        var t = Vector3(1, 0, 3)
+        var ct = CATransform3DIdentity.rotate(vector: r).scale(vector:s).translate(vector:t)
+        var m = Matrix4(ct)
 
-        let mm = Matrix4.Identity.rotate(r).scale(s).translate(t)
+        var mm = Matrix4.Identity.rotate(r).scale(s).translate(t)
         XCTAssertTrue(m ~= mm, "\(m) != \(mm)")
 
-        let ct2 = CATransform3DIdentity.translate(vector: t).rotate(vector: r).scale(vector: s)
-        let m2 = Matrix4(ct2)
-        let mm2 = Matrix4.Identity.translate(t).rotate(r).scale(s)
-        XCTAssertTrue(m2 ~= mm2, "\(m2) != \(mm2)")
+        ct = CATransform3DIdentity.translate(vector: t).rotate(vector: r).scale(vector: s)
+        m = Matrix4(ct)
+        mm = Matrix4.Identity.translate(t).rotate(r).scale(s)
+        XCTAssertTrue(m ~= mm, "\(m) != \(mm)")
+
+        ct = CATransform3DIdentity.translate(vector: -t).rotate(vector: -r).scale(vector: -s)
+        m = Matrix4(ct)
+        mm = Matrix4.Identity.translate(-t).rotate(-r).scale(-s)
+        XCTAssertTrue(m ~= mm, "\(m) != \(mm)")
+
 
     }
 }

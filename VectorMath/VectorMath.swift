@@ -1023,28 +1023,28 @@ extension Matrix4: Equatable, Hashable {
     public func rotate(v:Vector3) -> Matrix4 {
 
         func rotateX(theta:Scalar) -> Matrix4 {
-            let c = cos(-theta), s = sin(-theta)
+            let c = cos(theta), s = sin(theta)
             return Matrix4(
-                1, 0,  0, 0,
-                0, c, -s, 0,
-                0, s,  c, 0,
-                0, 0,  0, 1
+                1,  0, 0, 0,
+                0,  c, s, 0,
+                0, -s, c, 0,
+                0,  0, 0, 1
             )
         }
         func rotateY(theta:Scalar) -> Matrix4 {
-            let c = cos(-theta), s = sin(-theta)
+            let c = cos(theta), s = sin(theta)
             return Matrix4(
-                c, 0, s, 0,
-                0, 1, 0, 0,
-               -s, 0, c, 0,
-                0, 0, 0, 1
+                c, 0, -s, 0,
+                0, 1,  0, 0,
+                s, 0,  c, 0,
+                0, 0,  0, 1
             )
         }
         func rotateZ(theta:Scalar) -> Matrix4 {
-            let c = cos(-theta), s = sin(-theta)
+            let c = cos(theta), s = sin(theta)
             return Matrix4(
-                c, -s, 0, 0,
-                s,  c, 0, 0,
+                c,  s, 0, 0,
+               -s, c, 0, 0,
                 0,  0, 1, 0,
                 0,  0, 0, 1
             )
