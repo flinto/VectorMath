@@ -205,6 +205,16 @@ extension Vector2: Equatable, Hashable {
     public func interpolatedWith(v: Vector2, t: Scalar) -> Vector2 {
         return self + (v - self) * t
     }
+
+    public var isFinite:Bool {
+        return x.isFinite && y.isFinite
+    }
+
+    public mutating func makeFinite() {
+        x.makeFiniteInPlace()
+        y.makeFiniteInPlace()
+    }
+
 }
 
 public prefix func -(v: Vector2) -> Vector2 {
@@ -381,6 +391,18 @@ extension Vector3: Equatable, Hashable {
         x = max(minV, min(maxV, x))
         y = max(minV, min(maxV, y))
         z = max(minV, min(maxV, z))
+    }
+
+    public func vectorWithEpsilon() -> Vector3 {
+        var val = self
+        if val.x == 0 { val.x = CGFloat.epsilon }
+        if val.y == 0 { val.y = CGFloat.epsilon }
+        if val.z == 0 { val.z = CGFloat.epsilon }
+        return val
+    }
+
+    public var isFinite:Bool {
+        return x.isFinite && y.isFinite && z.isFinite
     }
 
     public var rx:Scalar { return x / 180.0 * Scalar(M_PI) }
@@ -563,6 +585,20 @@ extension Vector4: Equatable, Hashable {
     public func interpolatedWith(v: Vector4, t: Scalar) -> Vector4 {
         return self + (v - self) * t
     }
+
+    public func vectorWithEpsilon() -> Vector4 {
+        var val = self
+        if val.x == 0 { val.x = CGFloat.epsilon }
+        if val.y == 0 { val.y = CGFloat.epsilon }
+        if val.z == 0 { val.z = CGFloat.epsilon }
+        if val.w == 0 { val.w = CGFloat.epsilon }
+        return val
+    }
+
+    public var isFinite:Bool {
+        return x.isFinite && y.isFinite && z.isFinite && w.isFinite
+    }
+
 }
 
 public prefix func -(v: Vector4) -> Vector4 {
