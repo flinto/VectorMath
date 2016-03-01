@@ -125,6 +125,7 @@ public func ~=(lhs: Scalar, rhs: Scalar) -> Bool {
 extension Vector2: Equatable, Hashable {
     
     public static let Zero = Vector2(0, 0)
+    public static let Unit = Vector2(1, 1)
     public static let X = Vector2(1, 0)
     public static let Y = Vector2(0, 1)
     
@@ -266,6 +267,7 @@ public func ~=(lhs: Vector2, rhs: Vector2) -> Bool {
 extension Vector3: Equatable, Hashable {
     
     public static let Zero = Vector3(0, 0, 0)
+    public static let Unit = Vector3(1, 1, 1)
     public static let X = Vector3(1, 0, 0)
     public static let Y = Vector3(0, 1, 0)
     public static let Z = Vector3(0, 0, 1)
@@ -482,6 +484,7 @@ public func ~=(lhs: Vector3, rhs: Vector3) -> Bool {
 extension Vector4: Equatable, Hashable {
     
     public static let Zero = Vector4(0, 0, 0, 0)
+    public static let Unit = Vector4(1, 1, 1, 1)
     public static let X = Vector4(1, 0, 0, 0)
     public static let Y = Vector4(0, 1, 0, 0)
     public static let Z = Vector4(0, 0, 1, 0)
