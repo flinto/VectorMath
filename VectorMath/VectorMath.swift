@@ -1114,7 +1114,7 @@ extension Matrix4: Equatable, Hashable {
         return self * Matrix4(scale:v)
     }
 
-    public func decompose(callback:(Vector3, Quaternion, Vector3) -> Void) {
+    public func decompose() -> (transform:Vector3, rotation:Quaternion, scale:Vector3) {
 
         var scale = Vector3(
             Vector3(m11,m12,m13).length,
@@ -1147,7 +1147,7 @@ extension Matrix4: Equatable, Hashable {
 
         let rotation = Quaternion(rotationMatrix: matrix)
 
-        callback(translate, rotation, scale)
+        return(translate, rotation, scale)
     }
 
 }
