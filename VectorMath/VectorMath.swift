@@ -397,10 +397,17 @@ extension Vector3: Equatable, Hashable {
 
     public func vectorWithEpsilon() -> Vector3 {
         var val = self
-        if val.x == 0 { val.x = CGFloat.epsilon }
-        if val.y == 0 { val.y = CGFloat.epsilon }
-        if val.z == 0 { val.z = CGFloat.epsilon }
+        if val.x == 0 { val.x = Scalar.Epsilon }
+        if val.y == 0 { val.y = Scalar.Epsilon }
+        if val.z == 0 { val.z = Scalar.Epsilon }
         return val
+    }
+
+    public var isEpsilon:Bool {
+        if abs(x) <= Scalar.Epsilon && abs(y) <= Scalar.Epsilon &&  abs(z) <= Scalar.Epsilon {
+            return true
+        }
+        return false
     }
 
     public var isFinite:Bool {
