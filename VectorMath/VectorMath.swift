@@ -383,6 +383,10 @@ extension Vector3: Equatable, Hashable {
         return x == 1.0 && y == 1.0 && z == 1.0
     }
 
+    public var isNearlyUnit:Bool {
+        return x ~= 1.0 && y ~= 1.0 && z ~= 1.0
+    }
+
     public func clip(minV:Scalar, _ maxV:Scalar) -> Vector3 {
         var r = self
         r.clipInPlace(minV, maxV)
@@ -1114,6 +1118,8 @@ extension Matrix4: Equatable, Hashable {
         return self * Matrix4(scale:v)
     }
 
+    //   TODO: Decompose method return rotation as Quaternion which sign is flipped because the method is implemented
+    // non-flipped coordinates where other method such as 'rotate' is implemented as flipped coordinate as CoreAnimation has
     public func decompose() -> (transform:Vector3, rotation:Quaternion, scale:Vector3) {
 
         var scale = Vector3(
@@ -1150,6 +1156,12 @@ extension Matrix4: Equatable, Hashable {
         return(translate, rotation, scale)
     }
 
+    var isAffine:Bool {
+        if m14 ~= 0 && m24 ~= 0 && m34 ~= 0 {
+            return true
+        }
+        return false
+    }
 }
 
 public prefix func -(m: Matrix4) -> Matrix4 {
