@@ -609,6 +609,13 @@ extension Vector4: Equatable, Hashable {
         return val
     }
 
+    public func toReal() -> Vector4 {
+        if w != 0 && w != 1 {
+            return Vector4(x/w, y/w, z/w, 1)
+        }
+        return self
+    }
+
     public var isFinite:Bool {
         return x.isFinite && y.isFinite && z.isFinite && w.isFinite
     }
