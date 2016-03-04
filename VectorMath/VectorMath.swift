@@ -264,7 +264,7 @@ public func ~=(lhs: Vector2, rhs: Vector2) -> Bool {
 
 //MARK: Vector3
 
-extension Vector3: Equatable, Hashable {
+extension Vector3: Equatable, Hashable, CustomStringConvertible {
     
     public static let Zero = Vector3(0, 0, 0)
     public static let Unit = Vector3(1, 1, 1)
@@ -414,6 +414,10 @@ extension Vector3: Equatable, Hashable {
     public var rx:Scalar { return x / 180.0 * Scalar(M_PI) }
     public var ry:Scalar { return y / 180.0 * Scalar(M_PI) }
     public var rz:Scalar { return z / 180.0 * Scalar(M_PI) }
+
+    public var description:String {
+        return String(format:"Vector3( % 4.3lf, % 4.3lf, % 4.3lf)", x, y, z)
+    }
 }
 
 public prefix func -(v: Vector3) -> Vector3 {
@@ -840,7 +844,7 @@ public func ~=(lhs: Matrix3, rhs: Matrix3) -> Bool {
 
 //MARK: Matrix4
 
-extension Matrix4: Equatable, Hashable {
+extension Matrix4: Equatable, Hashable, CustomStringConvertible {
     
     public static let Identity = Matrix4(1, 0 ,0 ,0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
     
@@ -1184,6 +1188,25 @@ extension Matrix4: Equatable, Hashable {
         }
         return false
     }
+
+    public var description:String {
+
+        let (t,q,s) = decompose()
+        let m = toArray().map { String(format:"% 4.3lf", $0) }
+        let r = q.toRotationVector() * Scalar.DegreesPerRadian
+
+        return "\n" +
+        "[ \(m[0]), \(m[4]), \(m[ 8]), \(m[12]), \n" +
+        "  \(m[1]), \(m[5]), \(m[ 9]), \(m[13]), \n" +
+        "  \(m[2]), \(m[6]), \(m[10]), \(m[14]), \n" +
+        "  \(m[3]), \(m[7]), \(m[11]), \(m[15]) ]\n" +
+        "isAffine: " + (isAffine ? "true" : "false") + "\n" +
+        "T: \(t)\n" +
+        "R: \(r)\n" +
+        "S: \(s)\n" +
+        "Q: \(q)"
+    }
+
 }
 
 public prefix func -(m: Matrix4) -> Matrix4 {
@@ -1307,7 +1330,7 @@ public func ~=(lhs: Matrix4, rhs: Matrix4) -> Bool {
 
 //MARK: Quaternion
 
-extension Quaternion: Equatable, Hashable {
+extension Quaternion: Equatable, Hashable, CustomStringConvertible {
     
     public static let Zero = Quaternion(0, 0, 0, 0)
     public static let Identity = Quaternion(0, 0, 0, 1)
@@ -1449,6 +1472,14 @@ extension Quaternion: Equatable, Hashable {
         return (pitch, yaw, roll)
     }
     
+    public func toPitchYawRollArray() -> [Scalar] {
+        return [pitch, yaw, roll]
+    }
+
+    public func toRotationVector() -> Vector3 {
+        return Vector3(pitch, yaw, roll)
+    }
+
     public func toArray() -> [Scalar] {
         return [x, y, z, w]
     }
@@ -1478,6 +1509,10 @@ extension Quaternion: Equatable, Hashable {
         let t2 = (q - (self * dot)).normalized() * sin(theta)
         return t1 + t2
     }
+    public var description:String {
+        return String(format:"Quaternion( % 4.3lf, % 4.3lf, % 4.3lf, % 4.3lf)", x, y, z, w)
+    }
+
 }
 
 public prefix func -(q: Quaternion) -> Quaternion {
