@@ -407,13 +407,6 @@ extension Vector3: Equatable, Hashable {
         return val
     }
 
-    public var isEpsilon:Bool {
-        if abs(x) <= Scalar.Epsilon && abs(y) <= Scalar.Epsilon &&  abs(z) <= Scalar.Epsilon {
-            return true
-        }
-        return false
-    }
-
     public var isFinite:Bool {
         return x.isFinite && y.isFinite && z.isFinite
     }
@@ -1170,7 +1163,7 @@ extension Matrix4: Equatable, Hashable {
         return false
     }
 
-    public var isUnit:Bool {
+    public var isIdentity:Bool {
         if m11 == 1.0 && m22 == 1.0 && m33 == 1.0 && m44 == 1.0 &&
             m12 == 0.0 && m13 == 0.0 && m14 == 0.0 &&
             m21 == 0.0 && m23 == 0.0 && m24 == 0.0 &&
@@ -1181,7 +1174,7 @@ extension Matrix4: Equatable, Hashable {
         return false
     }
 
-    public var isNearlyUnit:Bool {
+    public var isNearlyIdentity:Bool {
         if m11 ~= 1.0 && m22 ~= 1.0 && m33 ~= 1.0 && m44 ~= 1.0 &&
             m12 ~= 0.0 && m13 ~= 0.0 && m14 ~= 0.0 &&
             m21 ~= 0.0 && m23 ~= 0.0 && m24 ~= 0.0 &&
