@@ -211,7 +211,7 @@ extension Vector2: Equatable, Hashable {
         return x.isFinite && y.isFinite
     }
 
-    public mutating func makeFinite() {
+    public mutating func makeFiniteInPlace() {
         x.makeFiniteInPlace()
         y.makeFiniteInPlace()
     }
