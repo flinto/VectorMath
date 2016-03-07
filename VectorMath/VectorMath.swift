@@ -387,16 +387,24 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
         return x ~= 1.0 && y ~= 1.0 && z ~= 1.0
     }
 
-    public func clip(minV:Scalar, _ maxV:Scalar) -> Vector3 {
+    public func clamp(minV:Scalar, _ maxV:Scalar) -> Vector3 {
         var r = self
-        r.clipInPlace(minV, maxV)
+        r.clampInPlace(minV, maxV)
         return r
     }
 
-    mutating public func clipInPlace(minV:Scalar, _ maxV:Scalar) {
+    mutating public func clampInPlace(minV:Scalar, _ maxV:Scalar) {
         x = max(minV, min(maxV, x))
         y = max(minV, min(maxV, y))
         z = max(minV, min(maxV, z))
+    }
+
+    public func makeFinte() -> Vector3 {
+        var v = self
+        v.x.makeFiniteInPlace()
+        v.y.makeFiniteInPlace()
+        v.z.makeFiniteInPlace()
+        return v
     }
 
     public func vectorWithEpsilon() -> Vector3 {
