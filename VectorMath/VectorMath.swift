@@ -409,9 +409,9 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
 
     public func vectorWithEpsilon() -> Vector3 {
         var val = self
-        if val.x == 0 { val.x = Scalar.Epsilon }
-        if val.y == 0 { val.y = Scalar.Epsilon }
-        if val.z == 0 { val.z = Scalar.Epsilon }
+        if abs(val.x) < Scalar.Epsilon { val.x = Scalar.Epsilon }
+        if abs(val.y) < Scalar.Epsilon { val.y = Scalar.Epsilon }
+        if abs(val.z) < Scalar.Epsilon { val.z = Scalar.Epsilon }
         return val
     }
 
@@ -607,10 +607,10 @@ extension Vector4: Equatable, Hashable {
 
     public func vectorWithEpsilon() -> Vector4 {
         var val = self
-        if val.x == 0 { val.x = CGFloat.epsilon }
-        if val.y == 0 { val.y = CGFloat.epsilon }
-        if val.z == 0 { val.z = CGFloat.epsilon }
-        if val.w == 0 { val.w = CGFloat.epsilon }
+        if abs(val.x) < Scalar.Epsilon { val.x = Scalar.Epsilon }
+        if abs(val.y) < Scalar.Epsilon { val.y = Scalar.Epsilon }
+        if abs(val.z) < Scalar.Epsilon { val.z = Scalar.Epsilon }
+        if abs(val.w) < Scalar.Epsilon { val.w = Scalar.Epsilon }
         return val
     }
 
