@@ -163,32 +163,29 @@ class Matrix4Tests: XCTestCase {
 
     func testDecompose() {
 
-        let t = CATransform3DIdentity.rotate(vector: Vector3(0, 0, 90)).scale(1, 5.5, 3).translate(1, 0, 3)
-        let m = Matrix4(t)
-        m.decompose { t, r, s in
-            XCTAssert(t.x == 0, "\(t.x) == 1")
-            XCTAssert(t.y == 1, "\(t.y) == 0")
-            XCTAssert(t.z == 9, "\(t.z) == 3")
+        let mt = CATransform3DIdentity.rotate(vector: Vector3(0, 0, 90)).scale(1, 5.5, 3).translate(1, 0, 3)
+        let m = Matrix4(mt)
+        let (t, r, s) = m
+            .decompose()
+        XCTAssert(t.x == 0, "\(t.x) == 1")
+        XCTAssert(t.y == 1, "\(t.y) == 0")
+        XCTAssert(t.z == 9, "\(t.z) == 3")
 
-            XCTAssert(s.x == 1,   "\(s.x) == 0")
-            XCTAssert(s.y == 5.5, "\(s.y) == 1.5")
-            XCTAssert(s.z == 3,   "\(s.z) == 1")
+        XCTAssert(s.x == 1,   "\(s.x) == 0")
+        XCTAssert(s.y == 5.5, "\(s.y) == 1.5")
+        XCTAssert(s.z == 3,   "\(s.z) == 1")
 
-            print(r)
-            XCTAssertEqualWithAccuracy(r.pitch, 0, accuracy:0.00001, "\(r.pitch) == 0")
-            XCTAssertEqualWithAccuracy(r.yaw,   0, accuracy:0.00001, "\(r.yaw) == 1.5")
-            XCTAssertEqualWithAccuracy(r.roll, -Scalar.Pi/2, accuracy:0.00001,  "\(r.roll) == \(Scalar.Pi/2)")
-
-
-        }
-
+        print(r)
+        XCTAssertEqualWithAccuracy(r.pitch, 0, accuracy:0.00001, "\(r.pitch) == 0")
+        XCTAssertEqualWithAccuracy(r.yaw,   0, accuracy:0.00001, "\(r.yaw) == 1.5")
+        XCTAssertEqualWithAccuracy(r.roll, -Scalar.Pi/2, accuracy:0.00001,  "\(r.roll) == \(Scalar.Pi/2)")
     }
 
 
     func testTRS() {
-        var r = Vector3(30, 0, 90)
-        var s = Vector3(1, 5.5, 3)
-        var t = Vector3(1, 0, 3)
+        let r = Vector3(30, 0, 90)
+        let s = Vector3(1, 5.5, 3)
+        let t = Vector3(1, 0, 3)
         var ct = CATransform3DIdentity.rotate(vector: r).scale(vector:s).translate(vector:t)
         var m = Matrix4(ct)
 
