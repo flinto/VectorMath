@@ -1414,7 +1414,7 @@ extension Quaternion: Equatable, Hashable, CustomStringConvertible {
     public init(rotationMatrix m: Matrix4) {
         
         let diagonal = m.m11 + m.m22 + m.m33 + 1
-        if diagonal ~= 0 {
+        if diagonal > 0 {
             
             let scale = sqrt(diagonal) * 2
             self.init(

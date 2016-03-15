@@ -181,7 +181,6 @@ class Matrix4Tests: XCTestCase {
         XCTAssertEqualWithAccuracy(r.roll, -Scalar.Pi/2, accuracy:0.00001,  "\(r.roll) == \(Scalar.Pi/2)")
     }
 
-
     func testTRS() {
         let r = Vector3(30, 0, 90)
         let s = Vector3(1, 5.5, 3)
@@ -225,6 +224,15 @@ class QuaternionTests: XCTestCase {
         let c = a * q
         
         XCTAssertTrue(b ~= c)
+    }
+
+    func testWithRotationMatrix() {
+        let m = Matrix4.Identity.rotate(Vector3(0, 0, -180))
+        let q = Quaternion(rotationMatrix:m)
+        XCTAssertEqual(q.x, 0)
+        XCTAssertEqual(q.y, 0)
+        XCTAssertEqual(q.z, 1)
+        XCTAssert(q.w ~= 0)
     }
 }
 
