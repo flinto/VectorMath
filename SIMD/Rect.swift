@@ -230,8 +230,8 @@ struct Rect : Equatable, NearlyEquatable {
   }
 
   static func union(rects:[Rect]) -> Rect? {
-    let r = rects.reduce(Rect.null) { $0.union($1) }
-    return r == .null ? nil : r
+    if rects.count == 0 { return nil }
+    return rects.reduce(Rect.null) { $0.union($1) }
   }
   
 
