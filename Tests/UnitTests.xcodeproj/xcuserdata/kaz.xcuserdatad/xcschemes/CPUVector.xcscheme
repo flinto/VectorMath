@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "01B6A63A1A23EF1400DA8FB3"
-               BuildableName = "VectorMath.app"
-               BlueprintName = "VectorMath"
-               ReferencedContainer = "container:UnitTests.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "01B6A64F1A23EF1400DA8FB3"
-               BuildableName = "UnitTestsTests.xctest"
-               BlueprintName = "UnitTests"
+               BlueprintIdentifier = "6E0D77F71CE95AC30057D396"
+               BuildableName = "CPUVector.framework"
+               BlueprintName = "CPUVector"
                ReferencedContainer = "container:UnitTests.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "01B6A64F1A23EF1400DA8FB3"
-               BuildableName = "UnitTestsTests.xctest"
-               BlueprintName = "UnitTests"
-               ReferencedContainer = "container:UnitTests.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "01B6A63A1A23EF1400DA8FB3"
-            BuildableName = "VectorMath.app"
-            BlueprintName = "VectorMath"
-            ReferencedContainer = "container:UnitTests.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -75,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "01B6A63A1A23EF1400DA8FB3"
-            BuildableName = "VectorMath.app"
-            BlueprintName = "VectorMath"
+            BlueprintIdentifier = "6E0D77F71CE95AC30057D396"
+            BuildableName = "CPUVector.framework"
+            BlueprintName = "CPUVector"
             ReferencedContainer = "container:UnitTests.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -94,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "01B6A63A1A23EF1400DA8FB3"
-            BuildableName = "VectorMath.app"
-            BlueprintName = "VectorMath"
+            BlueprintIdentifier = "6E0D77F71CE95AC30057D396"
+            BuildableName = "CPUVector.framework"
+            BlueprintName = "CPUVector"
             ReferencedContainer = "container:UnitTests.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

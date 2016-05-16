@@ -8,6 +8,7 @@
 
 import QuartzCore
 import XCTest
+import CPUVector
 
 class Vector2Tests: XCTestCase {
     
@@ -162,7 +163,7 @@ class Matrix4Tests: XCTestCase {
 
     func testDecompose() {
 
-        var mt = CATransform3DMakeRotation(90 * Scalar.RadiansPerDegree, 0, 0, 1)
+        var mt = CATransform3DMakeRotation(90 * CPUVector.Scalar.RadiansPerDegree, 0, 0, 1)
         mt = CATransform3DScale(mt, 1, 5.5, 3)
         mt = CATransform3DTranslate(mt, 1, 0, 3)
 //        let mt = CATransform3DIdentity.rotate(vector: Vector3(0, 0, 90)).scale(1, 5.5, 3).translate(1, 0, 3)
@@ -180,26 +181,28 @@ class Matrix4Tests: XCTestCase {
         print(r)
         XCTAssertEqualWithAccuracy(r.pitch, 0, accuracy:0.00001, "\(r.pitch) == 0")
         XCTAssertEqualWithAccuracy(r.yaw,   0, accuracy:0.00001, "\(r.yaw) == 1.5")
-        XCTAssertEqualWithAccuracy(r.roll, -Scalar.Pi/2, accuracy:0.00001,  "\(r.roll) == \(Scalar.Pi/2)")
+        XCTAssertEqualWithAccuracy(r.roll, -CPUVector.Scalar.Pi/2, accuracy:0.00001,  "\(r.roll) == \(Scalar.Pi/2)")
     }
 
     func testTRS() {
         let r = Vector3(30, 0, 90)
         let s = Vector3(1, 5.5, 3)
         let t = Vector3(1, 0, 3)
-        var ct = CATransform3DMakeRotation(30 * Scalar.RadiansPerDegree, 1, 0, 0)
-        ct = CATransform3DRotate(ct, 90 * Scalar.RadiansPerDegree, 0, 0, 1)
+        var ct = CATransform3DMakeRotation(30 * CPUVector.Scalar.RadiansPerDegree, 1, 0, 0)
+        ct = CATransform3DRotate(ct, 90 * CPUVector.Scalar.RadiansPerDegree, 0, 0, 1)
         ct = CATransform3DScale(ct, 1, 5.5, 3)
         ct = CATransform3DTranslate(ct, 1, 0, 3)
 //        var ct = CATransform3DIdentity.rotate(vector: r).scale(vector:s).translate(vector:t)
         var m = Matrix4(ct)
 
         var mm = Matrix4.Identity.rotate(r).scale(s).translate(t)
+        print(m)
+        print(mm)
         XCTAssertTrue(m ~= mm, "\(m) != \(mm)")
 
         ct = CATransform3DMakeTranslation(1, 0, 3)
-        ct = CATransform3DRotate(ct, 30 * Scalar.RadiansPerDegree, 1, 0, 0)
-        ct = CATransform3DRotate(ct, 90 * Scalar.RadiansPerDegree, 0, 0, 1)
+        ct = CATransform3DRotate(ct, 30 * CPUVector.Scalar.RadiansPerDegree, 1, 0, 0)
+        ct = CATransform3DRotate(ct, 90 * CPUVector.Scalar.RadiansPerDegree, 0, 0, 1)
         ct = CATransform3DScale(ct, 1, 5.5, 3)
         //        ct = CATransform3DIdentity.translate(vector: t).rotate(vector: r).scale(vector: s)
         m = Matrix4(ct)
@@ -207,8 +210,8 @@ class Matrix4Tests: XCTestCase {
         XCTAssertTrue(m ~= mm, "\(m) != \(mm)")
 
         ct = CATransform3DMakeTranslation(-1, 0, -3)
-        ct = CATransform3DRotate(ct, -30 * Scalar.RadiansPerDegree, 1, 0, 0)
-        ct = CATransform3DRotate(ct, -90 * Scalar.RadiansPerDegree, 0, 0, 1)
+        ct = CATransform3DRotate(ct, -30 * CPUVector.Scalar.RadiansPerDegree, 1, 0, 0)
+        ct = CATransform3DRotate(ct, -90 * CPUVector.Scalar.RadiansPerDegree, 0, 0, 1)
         ct = CATransform3DScale(ct, -1, -5.5, -3)
 //        ct = CATransform3DIdentity.translate(vector: -t).rotate(vector: -r).scale(vector: -s)
         m = Matrix4(ct)
@@ -224,7 +227,7 @@ class QuaternionTests: XCTestCase {
     func testAxisAngleConversion() {
         
         let aaa = Vector4(1, 0, 0, .HalfPi)
-        let q = Quaternion(axisAngle: aaa)
+        let q = CPUVector.Quaternion(axisAngle: aaa)
         let aab = q.toAxisAngle()
         
         XCTAssertTrue(aaa ~= aab)
@@ -232,7 +235,7 @@ class QuaternionTests: XCTestCase {
 
     func testVector3Multiplication() {
         
-        let q = Quaternion(axisAngle: Vector4(0, 0, 1, .HalfPi))
+        let q = CPUVector.Quaternion(axisAngle: Vector4(0, 0, 1, .HalfPi))
         let a = Vector3(1, 0, 1)
         let b = Vector3(0, 1, 1)
         let c = a * q
@@ -242,7 +245,7 @@ class QuaternionTests: XCTestCase {
 
     func testWithRotationMatrix() {
         let m = Matrix4.Identity.rotate(Vector3(0, 0, -180))
-        let q = Quaternion(rotationMatrix:m)
+        let q = CPUVector.Quaternion(rotationMatrix:m)
         XCTAssertEqual(q.x, 0)
         XCTAssertEqual(q.y, 0)
         XCTAssertEqual(q.z, 1)

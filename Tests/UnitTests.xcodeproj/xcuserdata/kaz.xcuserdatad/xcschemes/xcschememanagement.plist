@@ -2,9 +2,42 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>CPUVector.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>SIMDTest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>UnitTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>01B6A64F1A23EF1400DA8FB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6E0D77F71CE95AC30057D396</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6E3BE9FF1CE975500026E562</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6E3BEA151CE975F90026E562</key>
 		<dict>
 			<key>primary</key>
 			<true/>
