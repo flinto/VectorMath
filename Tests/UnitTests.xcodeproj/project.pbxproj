@@ -18,6 +18,7 @@
 		6E3BEA211CE976AF0026E562 /* VectorMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B6A6561A23EF1400DA8FB3 /* VectorMathTests.swift */; };
 		6E3BEA231CE976D30026E562 /* VectorMath+Quartz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B6A6621A23F08000DA8FB3 /* VectorMath+Quartz.swift */; };
 		6E3BEA241CE97B740026E562 /* SIMDTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3BEA021CE975500026E562 /* SIMDTest.swift */; };
+		6E3BEA261CE9829D0026E562 /* RectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3BEA251CE9829D0026E562 /* RectTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		6E3BEA161CE975F90026E562 /* CPUVector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CPUVector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E3BEA181CE975F90026E562 /* CPUVector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUVector.h; sourceTree = "<group>"; };
 		6E3BEA1A1CE975F90026E562 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E3BEA251CE9829D0026E562 /* RectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectTest.swift; sourceTree = "<group>"; };
+		6E3BEA271CE987A50026E562 /* SIMD.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SIMD.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,7 @@
 		01B6A6321A23EF1400DA8FB3 = {
 			isa = PBXGroup;
 			children = (
+				6E3BEA271CE987A50026E562 /* SIMD.playground */,
 				6E3BE9EB1CE96F340026E562 /* SIMD */,
 				01B6A6601A23F08000DA8FB3 /* VectorMath */,
 				01B6A6531A23EF1400DA8FB3 /* VectorMathTests */,
@@ -139,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				6E3BEA021CE975500026E562 /* SIMDTest.swift */,
+				6E3BEA251CE9829D0026E562 /* RectTest.swift */,
 				6E3BEA041CE975500026E562 /* Info.plist */,
 			);
 			path = SIMDTest;
@@ -265,6 +270,7 @@
 			files = (
 				6E3BEA211CE976AF0026E562 /* VectorMathTests.swift in Sources */,
 				6E3BEA081CE975630026E562 /* Float.swift in Sources */,
+				6E3BEA261CE9829D0026E562 /* RectTest.swift in Sources */,
 				6E3BEA0A1CE975630026E562 /* Quaternion.swift in Sources */,
 				6E3BEA0D1CE975630026E562 /* Vector.swift in Sources */,
 				6E3BEA0C1CE975630026E562 /* SIMD+Quartz.swift in Sources */,

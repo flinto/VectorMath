@@ -57,7 +57,7 @@ protocol InterpolateArithmeticType {
   func *(lhs: Self, rhs: Scalar) -> Self
 }
 
-protocol VectorStorage : Equatable, Comparable, SignedPackedNumberType, NearlyEquatable, FiniteConvertible, InterpolateArithmeticType , CustomStringConvertible {
+protocol VectorStorage : Equatable, SignedPackedNumberType, NearlyEquatable, FiniteConvertible, InterpolateArithmeticType , CustomStringConvertible {
   associatedtype T
   var storage:T { get set }
 }
@@ -177,12 +177,7 @@ func -=<T:Float2>(inout lhs:T, rhs:T) { lhs.storage -= rhs.storage }
 func *=<T:Float2>(inout lhs:T, rhs:T) { lhs.storage *= rhs.storage }
 func /=<T:Float2>(inout lhs:T, rhs:T) { lhs.storage /= rhs.storage }
 
-func <<T:Float2>(lhs:T, rhs:T) -> Bool { return true }
-func ><T:Float2>(lhs:T, rhs:T) -> Bool { return true }
-func <=<T:Float2>(lhs:T, rhs:T) -> Bool { return true }
-func >=<T:Float2>(lhs:T, rhs:T) -> Bool { return true }
-
-func ==<T:Float2>(lhs:T, rhs:T) -> Bool { return true }
+func ==<T:Float2>(lhs:T, rhs:T) -> Bool { return float2_equal(lhs.storage, rhs.storage) }
 func ~==<T:Float2>(lhs:T, rhs:T) -> Bool { return float2_nearly_equal(lhs.storage, rhs.storage) }
 
 func *<T:Float2>(lhs:T, rhs:Float) -> T { return T(lhs.storage * float2(rhs)) }
@@ -255,12 +250,7 @@ func -=<T:Float4>(inout lhs:T, rhs:T) { lhs.storage -= rhs.storage }
 func *=<T:Float4>(inout lhs:T, rhs:T) { lhs.storage *= rhs.storage }
 func /=<T:Float4>(inout lhs:T, rhs:T) { lhs.storage /= rhs.storage }
 
-func <<T:Float4>(lhs:T, rhs:T) -> Bool { return true }
-func ><T:Float4>(lhs:T, rhs:T) -> Bool { return true }
-func <=<T:Float4>(lhs:T, rhs:T) -> Bool { return true }
-func >=<T:Float4>(lhs:T, rhs:T) -> Bool { return true }
-
-func ==<T:Float4>(lhs:T, rhs:T) -> Bool { return true }
+func ==<T:Float4>(lhs:T, rhs:T) -> Bool { return float4_equal(lhs.storage, rhs.storage) }
 func ~==<T:Float4>(lhs:T, rhs:T) -> Bool { return float4_nearly_equal(lhs.storage, rhs.storage) }
 
 func *<T:Float4>(lhs:T, rhs:Float) -> T { return T(lhs.storage * float4(rhs)) }
@@ -274,7 +264,7 @@ struct Point : Float2 {
   var storage:float2
 
   init() { storage = float2() }
-  init(x:Float, y:Float) { self.init(y, y) }
+  init(x:Float, y:Float) { self.init(x, y) }
   init(_ storage:float2) { self.storage = storage }
 }
 

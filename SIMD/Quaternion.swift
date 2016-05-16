@@ -28,10 +28,14 @@ struct Quaternion : Float4, CustomStringConvertible {
     self.init(a.x, a.y, a.z, cos(r))
   }
 
+  var xyz:Vector {
+    return Vector(x, y, z, 0)
+  }
+
   @warn_unused_result
   func toAxisAngle() -> Vector {
 
-    let scale = length(storage)
+    let scale = length(xyz.storage)
     if scale ~= 0 || scale ~= .TwoPi {
       return Vector.z
     } else {

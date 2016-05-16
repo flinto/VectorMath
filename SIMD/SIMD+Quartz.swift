@@ -6,7 +6,7 @@ import simd
 
 extension CGPoint {
   init(_ p:Point) {
-    self.init(x:CGFloat(p.x), y:CGFloat(p.x))
+    self.init(x:CGFloat(p.x), y:CGFloat(p.y))
   }
 
   init(_ v:Vector) {
@@ -33,7 +33,13 @@ extension Size {
   }
 }
 
-
+extension EdgeInsets {
+  #if os(OSX)
+  init(insets:NSEdgeInsets) {
+    self.storage = float4(Float(insets.top), Float(insets.left), Float(insets.bottom), Float(insets.right))
+  }
+  #endif
+}
 
 extension CGRect {
   init(_ r:Rect) {
