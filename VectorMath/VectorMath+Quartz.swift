@@ -73,10 +73,10 @@ extension CATransform3D {
     public init(_ m: Matrix4) {
         
         self.init(
-            m11: CGFloat(m.m11), m12: CGFloat(m.m12), m13: CGFloat(m.m13), m14: CGFloat(m.m14),
-            m21: CGFloat(m.m21), m22: CGFloat(m.m22), m23: CGFloat(m.m23), m24: CGFloat(m.m24),
-            m31: CGFloat(m.m31), m32: CGFloat(m.m32), m33: CGFloat(m.m33), m34: CGFloat(m.m34),
-            m41: CGFloat(m.m41), m42: CGFloat(m.m42), m43: CGFloat(m.m43), m44: CGFloat(m.m44)
+            m11: m.m11, m12: m.m12, m13: m.m13, m14: m.m14,
+            m21: m.m21, m22: m.m22, m23: m.m23, m24: m.m24,
+            m31: m.m31, m32: m.m32, m33: m.m33, m34: m.m34,
+            m41: m.m41, m42: m.m42, m43: m.m43, m44: m.m44
         )
     }
 }
@@ -86,15 +86,15 @@ extension CATransform3D {
 extension Vector2 {
     
     public init(_ v: CGPoint) {
-        self.init(x: Scalar(v.x), y: Scalar(v.y))
+        self.init(x: v.x, y: v.y)
     }
     
     public init(_ v: CGSize) {
-        self.init(x: Scalar(v.width), y: Scalar(v.height))
+        self.init(x: v.width, y: v.height)
     }
     
     public init(_ v: CGVector) {
-        self.init(x: Scalar(v.dx), y: Scalar(v.dy))
+        self.init(x: v.dx, y: v.dy)
     }
 }
 
@@ -121,9 +121,9 @@ extension Matrix3 {
     public init(_ m: CGAffineTransform) {
         
         self.init(
-            m11: Scalar(m.a), m12: Scalar(m.b), m13: 0,
-            m21: Scalar(m.c), m22: Scalar(m.d), m23: 0,
-            m31: Scalar(m.tx), m32: Scalar(m.ty), m33: 1
+            m11: m.a, m12: m.b, m13: 0,
+            m21: m.c, m22: m.d, m23: 0,
+            m31: m.tx, m32: m.ty, m33: 1
         )
     }
 
@@ -134,10 +134,10 @@ extension Matrix4 {
     public init(_ m: CATransform3D) {
         
         self.init(
-            m11: Scalar(m.m11), m12: Scalar(m.m12), m13: Scalar(m.m13), m14: Scalar(m.m14),
-            m21: Scalar(m.m21), m22: Scalar(m.m22), m23: Scalar(m.m23), m24: Scalar(m.m24),
-            m31: Scalar(m.m31), m32: Scalar(m.m32), m33: Scalar(m.m33), m34: Scalar(m.m34),
-            m41: Scalar(m.m41), m42: Scalar(m.m42), m43: Scalar(m.m43), m44: Scalar(m.m44)
+            m11: m.m11, m12: m.m12, m13: m.m13, m14: m.m14,
+            m21: m.m21, m22: m.m22, m23: m.m23, m24: m.m24,
+            m31: m.m31, m32: m.m32, m33: m.m33, m34: m.m34,
+            m41: m.m41, m42: m.m42, m43: m.m43, m44: m.m44
         )
     }
 }
