@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		01B6A6501A23EF1400DA8FB3 /* UnitTestsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTestsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B6A6551A23EF1400DA8FB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01B6A6561A23EF1400DA8FB3 /* VectorMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorMathTests.swift; sourceTree = "<group>"; };
+		01B6A6561A23EF1400DA8FB3 /* VectorMathTests.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = VectorMathTests.swift; sourceTree = "<group>"; tabWidth = 4; };
 		01B6A6611A23F08000DA8FB3 /* VectorMath+SceneKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VectorMath+SceneKit.swift"; sourceTree = "<group>"; };
 		01B6A6621A23F08000DA8FB3 /* VectorMath+Quartz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VectorMath+Quartz.swift"; sourceTree = "<group>"; };
 		01B6A6631A23F08000DA8FB3 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
@@ -104,6 +104,8 @@
 		01B6A6331A23EF1400DA8FB3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Nick Lockwood";
 				TargetAttributes = {

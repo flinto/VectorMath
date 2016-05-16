@@ -33,6 +33,7 @@
 
 
 import Foundation
+import QuartzCore
 
 //MARK: Types
 
@@ -212,8 +213,8 @@ extension Vector2: Equatable, Hashable {
     }
 
     public mutating func makeFiniteInPlace() {
-        x.makeFiniteInPlace()
-        y.makeFiniteInPlace()
+//        x.makeFiniteInPlace()
+//        y.makeFiniteInPlace()
     }
 
 }
@@ -401,9 +402,9 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
 
     public func makeFinte() -> Vector3 {
         var v = self
-        v.x.makeFiniteInPlace()
-        v.y.makeFiniteInPlace()
-        v.z.makeFiniteInPlace()
+//        v.x.makeFiniteInPlace()
+//        v.y.makeFiniteInPlace()
+//        v.z.makeFiniteInPlace()
         return v
     }
 

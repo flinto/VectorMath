@@ -147,10 +147,10 @@ func - (lhs:Vector3, rhs:CGPoint) -> Vector3 { return lhs - Vector3(rhs) }
 func += (inout lhs:Vector3, rhs:CGPoint)     { lhs += Vector3(rhs)}
 func -= (inout lhs:Vector3, rhs:CGPoint)     { lhs -= Vector3(rhs)}
 
-func + (lhs:CGPoint, rhs:Vector3) -> CGPoint { return lhs + rhs.toPoint() }
-func - (lhs:CGPoint, rhs:Vector3) -> CGPoint { return lhs - rhs.toPoint() }
-func += (inout lhs:CGPoint, rhs:Vector3)     { lhs += rhs.toPoint()}
-func -= (inout lhs:CGPoint, rhs:Vector3)     { lhs -= rhs.toPoint()}
+//func + (lhs:CGPoint, rhs:Vector3) -> CGPoint { return lhs + rhs.toPoint() }
+//func - (lhs:CGPoint, rhs:Vector3) -> CGPoint { return lhs - rhs.toPoint() }
+//func += (inout lhs:CGPoint, rhs:Vector3)     { lhs += rhs.toPoint()}
+//func -= (inout lhs:CGPoint, rhs:Vector3)     { lhs -= rhs.toPoint()}
 
 func * (lhs:Vector3, rhs:CGSize) ->Vector3  { return Vector3(x: lhs.x * rhs.width, y: lhs.y * rhs.height, z:lhs.z) }
 func / (lhs:Vector3, rhs:CGSize) ->Vector3  { return Vector3(x: lhs.x / rhs.width, y: lhs.y / rhs.height, z:lhs.z) }
