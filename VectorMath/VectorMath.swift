@@ -401,7 +401,7 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
     }
 
     public func makeFinte() -> Vector3 {
-        var v = self
+        let v = self
 //        v.x.makeFiniteInPlace()
 //        v.y.makeFiniteInPlace()
 //        v.z.makeFiniteInPlace()
