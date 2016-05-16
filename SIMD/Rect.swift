@@ -229,12 +229,14 @@ struct Rect : Equatable, NearlyEquatable {
     fatalError("Not implemented")
   }
 
-
-  static func unionRects(rects:[Rect]) -> Rect {
-    return rects.reduce(.null) { $0.union($1) }
+  static func union(rects:[Rect]) -> Rect? {
+    let r = rects.reduce(Rect.null) { $0.union($1) }
+    return r == .null ? nil : r
   }
+  
 
 }
+
 
 func ==(lhs:Rect, rhs:Rect) -> Bool { return lhs.origin == rhs.origin && lhs.size == rhs.size }
 func ~==(lhs:Rect, rhs:Rect) -> Bool { return lhs.origin ~== rhs.origin && lhs.size ~== rhs.size }
