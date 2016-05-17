@@ -14,14 +14,14 @@ class SIMDRectTest: XCTestCase {
     let r = Rect(0, 0, 100, 100)
     let cr = CGRectMake(0, 0, 100, 100)
 
-    XCTAssertTrue(r.insetBy(dx: 10, dy: 10) == Rect(cr.insetBy(dx:10, dy:10)))
-    XCTAssertTrue(r.insetBy(dx: -20, dy: 0) == Rect(cr.insetBy(dx: -20, dy: 0)))
-    XCTAssertTrue(r.insetBy(dx: -20, dy: -20) == Rect(cr.insetBy(dx: -20, dy: -20)))
+    XCTAssertTrue(r.insetted(dx: 10, dy: 10) == Rect(cr.insetBy(dx:10, dy:10)))
+    XCTAssertTrue(r.insetted(dx: -20, dy: 0) == Rect(cr.insetBy(dx: -20, dy: 0)))
+    XCTAssertTrue(r.insetted(dx: -20, dy: -20) == Rect(cr.insetBy(dx: -20, dy: -20)))
   }
   
   func testEdgeInset() {
     let r = Rect(0, 0, 100, 100)
-    XCTAssertEqual(r.insetBy(EdgeInsets(10, 20, -10, -20)), Rect(20, 10, 100, 100))
+    XCTAssertEqual(r.insetted(EdgeInsets(10, 20, -10, -20)), Rect(20, 10, 100, 100))
   }
 
   func testCGRect() {
@@ -50,7 +50,7 @@ class SIMDRectTest: XCTestCase {
       var crect = CGRect(rect)
       XCTAssertEqual(rect, Rect(crect))
 
-      rect.standardizeInPlace()
+      rect.standardize()
       crect.standardizeInPlace()
       XCTAssertEqual(rect, Rect(crect), "Standardize")
     }
@@ -69,7 +69,7 @@ class SIMDRectTest: XCTestCase {
       var crect = CGRect(rect)
       XCTAssertEqual(rect, Rect(crect))
 
-      rect.makeIntegralInPlace()
+      rect.formIntegral()
       crect.makeIntegralInPlace()
       XCTAssertEqual(rect, Rect(crect))
     }

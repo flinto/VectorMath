@@ -35,7 +35,7 @@ protocol SignedPackedNumberType {
 protocol FiniteConvertible : FloatingPointValidation {
   @warn_unused_result
   func makeFinite() -> Self
-  mutating func makeFiniteInPlace()
+  mutating func formFinite()
 }
 
 protocol IntegerConvertible {
@@ -106,7 +106,7 @@ extension Scalar : FiniteConvertible, InterpolateArithmeticType {
     }
     return self
   }
-  mutating func makeFiniteInPlace() {
+  mutating func formFinite() {
     if self.isNaN {
       self = .zero
     }
@@ -149,9 +149,9 @@ extension Float2 {
   func makeFinite() -> Self {
     return Self(x.makeFinite(), y.makeFinite())
   }
-  mutating func makeFiniteInPlace() {
-    x.makeFiniteInPlace()
-    y.makeFiniteInPlace()
+  mutating func formFinite() {
+    x.formFinite()
+    y.formFinite()
   }
 }
 
@@ -220,11 +220,11 @@ extension Float4 {
   func makeFinite() -> Self {
     return Self(x.makeFinite(), y.makeFinite(), z.makeFinite(), w.makeFinite())
   }
-  mutating func makeFiniteInPlace() {
-    x.makeFiniteInPlace()
-    y.makeFiniteInPlace()
-    z.makeFiniteInPlace()
-    w.makeFiniteInPlace()
+  mutating func formFinite() {
+    x.formFinite()
+    y.formFinite()
+    z.formFinite()
+    w.formFinite()
   }
 }
 

@@ -91,7 +91,7 @@ struct Rect : Equatable, NearlyEquatable {
     if proportional {
       size.width = abs(size.height) * sign(size.width)
     }
-    standardizeInPlace()
+    standardize()
   }
 
   init(origin:Point, size:Size) {
@@ -150,12 +150,12 @@ struct Rect : Equatable, NearlyEquatable {
 
   var integral:Rect {
     var r = self
-    r.makeIntegralInPlace()
+    r.formIntegral()
     return r
   }
 
-  mutating func makeIntegralInPlace() {
-    standardizeInPlace()
+  mutating func formIntegral() {
+    standardize()
     let tl = origin.floored.storage
     let br = bottomRight.ceiled.storage - tl
     origin = Point(tl)
@@ -176,18 +176,18 @@ struct Rect : Equatable, NearlyEquatable {
     fatalError("Not implemented")
   }
 
-  mutating func unionInPlace(r:Rect) {
+  mutating func formUnion(r:Rect) {
     if r.isEmpty { return }
     fatalError("Not implemented")
   }
 
   var standardized:Rect {
     var r = self
-    r.standardizeInPlace()
+    r.standardize()
     return r
   }
 
-  mutating func standardizeInPlace() {
+  mutating func standardize() {
     if size.width < 0 {
       origin.x += size.width
       size.width = -size.width
@@ -199,20 +199,20 @@ struct Rect : Equatable, NearlyEquatable {
   }
 
   @warn_unused_result
-  func insetBy(dx dx: Float, dy: Float) -> Rect {
+  func insetted(dx dx: Float, dy: Float) -> Rect {
     var r = self
-    r.insetInPlace(dx: dx, dy: dy)
+    r.inset(dx: dx, dy: dy)
     return r
   }
 
-  mutating func insetInPlace(dx dx: Float, dy: Float) {
+  mutating func inset(dx dx: Float, dy: Float) {
     origin.storage += float2(dx, dy)
     size.storage -= float2(dx, dy) * 2
 
   }
 
   @warn_unused_result
-  func insetBy(insets:EdgeInsets) -> Rect {
+  func insetted(insets:EdgeInsets) -> Rect {
     var rect = self
     rect.origin.x    += insets.left
     rect.origin.y    += insets.top
