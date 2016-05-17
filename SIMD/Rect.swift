@@ -1,6 +1,6 @@
 
 import simd
-
+import QuartzCore
 
 //
 // MARK: - Point
@@ -170,17 +170,6 @@ struct Rect : Equatable, NearlyEquatable {
     return [topCenter, middleRight, bottomCenter, middleLeft]
   }
 
-  @warn_unused_result
-  func union(r:Rect) -> Rect {
-    if r.isEmpty { return self }
-    fatalError("Not implemented")
-  }
-
-  mutating func formUnion(r:Rect) {
-    if r.isEmpty { return }
-    fatalError("Not implemented")
-  }
-
   var standardized:Rect {
     var r = self
     r.standardize()
@@ -221,12 +210,40 @@ struct Rect : Equatable, NearlyEquatable {
     return rect
   }
 
+  // TODO: - Replace CGRect function
+  @warn_unused_result
+  func union(r:Rect) -> Rect {
+    return Rect(CGRectUnion(CGRect(self), CGRect(r)))
+  }
+
+  mutating func formUnion(r:Rect) {
+    updateWithCGRect(CGRectUnion(CGRect(self), CGRect(r)))
+  }
+
+  @warn_unused_result
+  func intersected(r:Rect) -> Rect {
+    return Rect(CGRectIntersection(CGRect(self), CGRect(r)))
+  }
+
+  mutating func intersect(r:Rect) {
+    updateWithCGRect(CGRectIntersection(CGRect(self), CGRect(r)))
+  }
+
+  func intersects(rect:Rect) -> Bool {
+    return CGRectIntersectsRect(CGRect(self), CGRect(rect))
+  }
+  
   func contains(p:Point) -> Bool {
-    fatalError("Not implemented")
+    return CGRect(self).contains(CGPoint(p))
   }
 
   func contains(r:Rect) -> Bool {
-    fatalError("Not implemented")
+    return CGRect(self).contains(CGRect(r))
+  }
+
+  private mutating func updateWithCGRect(r:CGRect) {
+    origin = Point(r.origin)
+    size = Size(r.size)
   }
 
   static func union(rects:[Rect]) -> Rect? {

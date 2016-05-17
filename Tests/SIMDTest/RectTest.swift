@@ -75,4 +75,48 @@ class SIMDRectTest: XCTestCase {
     }
   }
 
+  func testUnion() {
+    func r() -> Float {
+      var r = drand48() * 100
+      if Int(r) % 2 == 0 {
+        r = -r
+      }
+      return Float(r)
+    }
+    var prev = Rect.null
+    var cprev = CGRect.null
+
+    for _ in 0..<100 {
+      let rect = Rect(r(), r(), r(), r())
+      let crect = CGRect(rect)
+      XCTAssertEqual(rect, Rect(crect))
+
+      let u = rect.union(prev)
+      let cu = crect.union(cprev)
+      XCTAssertEqual(u, Rect(cu))
+
+      var r2 = rect
+      var cr2 = crect
+
+      r2.formUnion(prev)
+      cr2.unionInPlace(cprev)
+      XCTAssertEqual(r2, Rect(cr2))
+
+      prev = rect
+      cprev = crect
+    }
+  }
+
+  func testUnionAgainstNull() {
+    let r = Rect.null
+    XCTAssertTrue(r.union(r) == r)
+
+    let r1 = Rect(0, 0, 100, 100)
+    XCTAssertTrue(r.union(r1) == r1)
+
+    let r2 = Rect()
+    XCTAssertTrue(r.union(r2) == r2)
+
+  }
+
 }
