@@ -26,6 +26,10 @@ static inline vector_float2  __SIMD_ATTRIBUTES__ rint_float2(vector_float2  __x)
   return rint(__x);
 }
 
+static inline __SIMD_BOOLEAN_TYPE__ float2_any_minum(vector_float2 x) {
+  return vector_any(x < 0);
+}
+
 
 //
 // MARK: - float4

@@ -247,10 +247,15 @@ struct Rect : Equatable, NearlyEquatable {
   }
 
   static func union(rects:[Rect]) -> Rect? {
-    if rects.count == 0 { return nil }
-    return rects.reduce(Rect.null) { $0.union($1) }
+    if var r = rects.first {
+      for i in 1..<rects.count {
+        r.formUnion(rects[i])
+      }
+      return r
+    }
+    return nil
   }
-  
+
 
 }
 
