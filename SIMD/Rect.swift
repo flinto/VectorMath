@@ -14,10 +14,10 @@ extension Point {
 
 }
 
-func *(lhs:Point, rhs:Scalar) -> Point { return Point(lhs.storage * float2(rhs)) }
-func /(lhs:Point, rhs:Scalar) -> Point { return Point(lhs.storage / float2(rhs)) }
-func *= (inout lhs:Point, rhs:Scalar)  { return lhs.storage *= float2(rhs) }
-func /= (inout lhs:Point, rhs:Scalar)  { return lhs.storage /= float2(rhs) }
+func *(lhs:Point, rhs:Scalar) -> Point { return Point(lhs.storage * scalar2(rhs)) }
+func /(lhs:Point, rhs:Scalar) -> Point { return Point(lhs.storage / scalar2(rhs)) }
+func *= (inout lhs:Point, rhs:Scalar)  { return lhs.storage *= scalar2(rhs) }
+func /= (inout lhs:Point, rhs:Scalar)  { return lhs.storage /= scalar2(rhs) }
 
 
 //
@@ -28,18 +28,18 @@ extension Size {
 }
 
 
-func *(lhs:Size, rhs:Scalar) -> Size { return Size(lhs.storage * float2(rhs)) }
-func /(lhs:Size, rhs:Scalar) -> Size { return Size(lhs.storage / float2(rhs)) }
-func *= (inout lhs:Size, rhs:Scalar) { return lhs.storage *= float2(rhs) }
-func /= (inout lhs:Size, rhs:Scalar) { return lhs.storage /= float2(rhs) }
+func *(lhs:Size, rhs:Scalar) -> Size { return Size(lhs.storage * scalar2(rhs)) }
+func /(lhs:Size, rhs:Scalar) -> Size { return Size(lhs.storage / scalar2(rhs)) }
+func *= (inout lhs:Size, rhs:Scalar) { return lhs.storage *= scalar2(rhs) }
+func /= (inout lhs:Size, rhs:Scalar) { return lhs.storage /= scalar2(rhs) }
 
 
 //
 // MARK: - Edge Inset
 //
 
-struct EdgeInsets : Float4 {
-  var storage:float4
+struct EdgeInsets : Scalar4 {
+  var storage:scalar4
 
   var top:Float {
     get { return storage.x }
@@ -57,14 +57,14 @@ struct EdgeInsets : Float4 {
     get { return storage.w }
     set { storage.w = newValue }
   }
-  init(_ storage:float4) {
+  init(_ storage:scalar4) {
     self.storage = storage
   }
   init() {
-    self.storage = float4()
+    self.storage = scalar4()
   }
   init(top:Float = 0, left:Float = 0, bottom:Float = 0, right:Float = 0) {
-    self.storage = float4(top, left, bottom, right)
+    self.storage = scalar4(top, left, bottom, right)
   }
 
   var description:String {
@@ -105,8 +105,8 @@ struct Rect : Equatable, NearlyEquatable {
   }
 
   var center:Point {
-    get { return origin + Point(size.storage / float2(2)) }
-    set { origin = newValue - Point(size.storage / float2(2)) }
+    get { return origin + Point(size.storage / scalar2(2)) }
+    set { origin = newValue - Point(size.storage / scalar2(2)) }
   }
 
   var left:Float {
@@ -195,8 +195,8 @@ struct Rect : Equatable, NearlyEquatable {
   }
 
   mutating func inset(dx dx: Float, dy: Float) {
-    origin.storage += float2(dx, dy)
-    size.storage -= float2(dx, dy) * 2
+    origin.storage += scalar2(dx, dy)
+    size.storage -= scalar2(dx, dy) * 2
 
   }
 

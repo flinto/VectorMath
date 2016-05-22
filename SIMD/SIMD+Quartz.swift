@@ -36,7 +36,7 @@ extension Size {
 extension EdgeInsets {
   #if os(OSX)
   init(insets:NSEdgeInsets) {
-    self.storage = float4(Float(insets.top), Float(insets.left), Float(insets.bottom), Float(insets.right))
+    self.storage = scalar4(Float(insets.top), Float(insets.left), Float(insets.bottom), Float(insets.right))
   }
   #endif
 }
@@ -76,10 +76,10 @@ extension CATransform3D {
 
 extension Matrix {
   init(_ m:CATransform3D) {
-    let c1 = float4(Float(m.m11), Float(m.m12), Float(m.m13), Float(m.m14))
-    let c2 = float4(Float(m.m21), Float(m.m22), Float(m.m23), Float(m.m24))
-    let c3 = float4(Float(m.m31), Float(m.m32), Float(m.m33), Float(m.m34))
-    let c4 = float4(Float(m.m41), Float(m.m42), Float(m.m43), Float(m.m44))
+    let c1 = scalar4(Float(m.m11), Float(m.m12), Float(m.m13), Float(m.m14))
+    let c2 = scalar4(Float(m.m21), Float(m.m22), Float(m.m23), Float(m.m24))
+    let c3 = scalar4(Float(m.m31), Float(m.m32), Float(m.m33), Float(m.m34))
+    let c4 = scalar4(Float(m.m41), Float(m.m42), Float(m.m43), Float(m.m44))
     self.init([c1, c2, c3, c4])
   }
 }

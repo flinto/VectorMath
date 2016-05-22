@@ -1,7 +1,7 @@
 
 import simd
 
-typealias Matrix = float4x4
+typealias Matrix = scalar4x4
 
 extension Matrix : NearlyEquatable {
   static var identity:Matrix = Matrix(matrix_identity_float4x4)
@@ -15,10 +15,10 @@ extension Matrix : NearlyEquatable {
        _ m41: Scalar, _ m42: Scalar, _ m43: Scalar, _ m44: Scalar) {
 
     self.init(
-      [float4(m11, m12, m13, m14),
-       float4(m21, m22, m23, m24),
-       float4(m31, m32, m33, m34),
-       float4(m41, m42, m43, m44)
+      [scalar4(m11, m12, m13, m14),
+       scalar4(m21, m22, m23, m24),
+       scalar4(m31, m32, m33, m34),
+       scalar4(m41, m42, m43, m44)
       ])
   }
 

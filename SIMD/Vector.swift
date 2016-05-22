@@ -1,14 +1,14 @@
 
 import simd
 
-struct Vector : Float4 {
-  var storage:float4
+struct Vector : Scalar4 {
+  var storage:scalar4
 
   init() {
-    storage = float4()
+    storage = scalar4()
   }
 
-  init(_ storage:float4) {
+  init(_ storage:scalar4) {
     self.storage = storage
   }
 
@@ -62,7 +62,7 @@ extension Vector {
 }
 
 
-func *(lhs:Vector, rhs:Scalar) -> Vector { return Vector(lhs.storage * float4(rhs)) }
-func /(lhs:Vector, rhs:Scalar) -> Vector { return Vector(lhs.storage / float4(rhs)) }
-func *=(inout lhs:Vector, rhs:Scalar)    { return lhs.storage *= float4(rhs) }
-func /=(inout lhs:Vector, rhs:Scalar)    { return lhs.storage /= float4(rhs) }
+func *(lhs:Vector, rhs:Scalar) -> Vector { return Vector(lhs.storage * scalar4(rhs)) }
+func /(lhs:Vector, rhs:Scalar) -> Vector { return Vector(lhs.storage / scalar4(rhs)) }
+func *=(inout lhs:Vector, rhs:Scalar)    { return lhs.storage *= scalar4(rhs) }
+func /=(inout lhs:Vector, rhs:Scalar)    { return lhs.storage /= scalar4(rhs) }

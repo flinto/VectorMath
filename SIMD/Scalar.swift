@@ -3,7 +3,12 @@ import simd
 
 
 // Scalar type
+
 typealias Scalar = Float
+typealias scalar2 = float2
+typealias scalar3 = float3
+typealias scalar4 = float4
+typealias scalar4x4 = float4x4
 
 
 // Nearly equal operator and its protocol
@@ -63,16 +68,16 @@ protocol VectorStorage : Equatable, SignedPackedNumberType, NearlyEquatable, Fin
 }
 
 // Float2 and Float4 definition
-protocol Float2 : VectorStorage {
-  var storage:float2 {get set}
+protocol Scalar2 : VectorStorage {
+  var storage:scalar2 {get set}
   init()
-  init(_ storage:float2)
+  init(_ storage:scalar2)
 }
 
-protocol Float4 : VectorStorage {
-  var storage:float4 {get set}
+protocol Scalar4 : VectorStorage {
+  var storage:scalar4 {get set}
   init()
-  init(_ storage:float4)
+  init(_ storage:scalar4)
 }
 
 //
@@ -83,7 +88,7 @@ protocol Float4 : VectorStorage {
 extension Scalar : FiniteConvertible, InterpolateArithmeticType {
 
   static let epsilon = FLT_EPSILON
-  static let zero = Float(0)
+  static let zero = Scalar(0)
   static let min = FLT_MIN
   static let max = FLT_MAX
   static let graphicalEpsilon = (epsilon * 65536)
@@ -122,30 +127,30 @@ extension Scalar : FiniteConvertible, InterpolateArithmeticType {
 //
 // MARK: - Float2
 //
-extension Float2 {
+extension Scalar2 {
 
-  init(_ x:Float, _ y:Float) {
+  init(_ x:Scalar, _ y:Scalar) {
     self.init()
-    storage = float2(x, y)
+    storage = scalar2(x, y)
   }
-  var x:Float {
+  var x:Scalar {
     get { return storage.x }
     set { storage.x = newValue }
   }
-  var y:Float {
+  var y:Scalar {
     get { return storage.y }
     set { storage.y = newValue }
   }
 
 }
 
-extension Float2 {
+extension Scalar2 {
   var isNaN:Bool { return x.isNaN || y.isNaN }
   var isFinite:Bool { return x.isFinite && y.isFinite }
   var isInfinite:Bool { return x.isFinite || y.isInfinite }
 }
 
-extension Float2 {
+extension Scalar2 {
   func makeFinite() -> Self {
     return Self(x.makeFinite(), y.makeFinite())
   }
@@ -155,68 +160,68 @@ extension Float2 {
   }
 }
 
-extension Float2 {
+extension Scalar2 {
   var rounded:Self { return Self(rint_float2(storage)) }
   var ceiled:Self { return Self(ceil(storage)) }
   var floored:Self { return Self(floor(storage)) }
 }
 
-extension Float2 {
+extension Scalar2 {
   var description:String { return storage.debugDescription }
 }
 
-func +<T:Float2>(lhs:T, rhs:T) -> T { return T(lhs.storage + rhs.storage) }
-func -<T:Float2>(lhs:T, rhs:T) -> T { return T(lhs.storage - rhs.storage) }
-func *<T:Float2>(lhs:T, rhs:T) -> T { return T(lhs.storage * rhs.storage) }
-func /<T:Float2>(lhs:T, rhs:T) -> T { return T(lhs.storage / rhs.storage) }
+func +<T:Scalar2>(lhs:T, rhs:T) -> T { return T(lhs.storage + rhs.storage) }
+func -<T:Scalar2>(lhs:T, rhs:T) -> T { return T(lhs.storage - rhs.storage) }
+func *<T:Scalar2>(lhs:T, rhs:T) -> T { return T(lhs.storage * rhs.storage) }
+func /<T:Scalar2>(lhs:T, rhs:T) -> T { return T(lhs.storage / rhs.storage) }
 
-prefix func -<T:Float2>(x:T) -> T { return T(-x.storage) }
+prefix func -<T:Scalar2>(x:T) -> T { return T(-x.storage) }
 
-func +=<T:Float2>(inout lhs:T, rhs:T) { lhs.storage += rhs.storage }
-func -=<T:Float2>(inout lhs:T, rhs:T) { lhs.storage -= rhs.storage }
-func *=<T:Float2>(inout lhs:T, rhs:T) { lhs.storage *= rhs.storage }
-func /=<T:Float2>(inout lhs:T, rhs:T) { lhs.storage /= rhs.storage }
+func +=<T:Scalar2>(inout lhs:T, rhs:T) { lhs.storage += rhs.storage }
+func -=<T:Scalar2>(inout lhs:T, rhs:T) { lhs.storage -= rhs.storage }
+func *=<T:Scalar2>(inout lhs:T, rhs:T) { lhs.storage *= rhs.storage }
+func /=<T:Scalar2>(inout lhs:T, rhs:T) { lhs.storage /= rhs.storage }
 
-func ==<T:Float2>(lhs:T, rhs:T) -> Bool { return float2_equal(lhs.storage, rhs.storage) }
-func ~==<T:Float2>(lhs:T, rhs:T) -> Bool { return float2_nearly_equal(lhs.storage, rhs.storage) }
+func ==<T:Scalar2>(lhs:T, rhs:T) -> Bool { return float2_equal(lhs.storage, rhs.storage) }
+func ~==<T:Scalar2>(lhs:T, rhs:T) -> Bool { return float2_nearly_equal(lhs.storage, rhs.storage) }
 
-func *<T:Float2>(lhs:T, rhs:Float) -> T { return T(lhs.storage * float2(rhs)) }
+func *<T:Scalar2>(lhs:T, rhs:Scalar) -> T { return T(lhs.storage * scalar2(rhs)) }
 
 
 
 //
 // MARK: - Float4
 //
-extension Float4 {
-  init(_ x:Float, _ y:Float, _ z:Float, _ w:Float) {
+extension Scalar4 {
+  init(_ x:Scalar, _ y:Scalar, _ z:Scalar, _ w:Scalar) {
     self.init()
-    self.storage = float4(x, y, z, w)
+    self.storage = scalar4(x, y, z, w)
   }
-  var x:Float {
+  var x:Scalar {
     get { return storage.x }
     set { storage.x = newValue }
   }
-  var y:Float {
+  var y:Scalar {
     get { return storage.y }
     set { storage.y = newValue }
   }
-  var z:Float {
+  var z:Scalar {
     get { return storage.z }
     set { storage.z = newValue }
   }
-  var w:Float {
+  var w:Scalar {
     get { return storage.w }
     set { storage.w = newValue }
   }
 }
 
-extension Float4 {
+extension Scalar4 {
   var isNaN:Bool { return x.isNaN || y.isNaN || z.isNaN || w.isNaN }
   var isFinite:Bool { return x.isFinite && y.isFinite && z.isFinite && w.isFinite }
   var isInfinite:Bool { return x.isFinite || y.isInfinite || z.isFinite || w.isInfinite }
 }
 
-extension Float4 {
+extension Scalar4 {
   func makeFinite() -> Self {
     return Self(x.makeFinite(), y.makeFinite(), z.makeFinite(), w.makeFinite())
   }
@@ -228,44 +233,44 @@ extension Float4 {
   }
 }
 
-extension Float4 {
+extension Scalar4 {
   var rounded:Self { return Self(rint_float4(storage)) }
   var ceiled:Self { return Self(ceil(storage)) }
   var floored:Self { return Self(floor(storage)) }
 }
 
-extension Float4 {
+extension Scalar4 {
   var description:String { return storage.debugDescription }
 }
 
-func +<T:Float4>(lhs:T, rhs:T) -> T { return T(lhs.storage + rhs.storage) }
-func -<T:Float4>(lhs:T, rhs:T) -> T { return T(lhs.storage - rhs.storage) }
-func *<T:Float4>(lhs:T, rhs:T) -> T { return T(lhs.storage * rhs.storage) }
-func /<T:Float4>(lhs:T, rhs:T) -> T { return T(lhs.storage / rhs.storage) }
+func +<T:Scalar4>(lhs:T, rhs:T) -> T { return T(lhs.storage + rhs.storage) }
+func -<T:Scalar4>(lhs:T, rhs:T) -> T { return T(lhs.storage - rhs.storage) }
+func *<T:Scalar4>(lhs:T, rhs:T) -> T { return T(lhs.storage * rhs.storage) }
+func /<T:Scalar4>(lhs:T, rhs:T) -> T { return T(lhs.storage / rhs.storage) }
 
-prefix func -<T:Float4>(x:T) -> T { return T(-x.storage) }
+prefix func -<T:Scalar4>(x:T) -> T { return T(-x.storage) }
 
-func +=<T:Float4>(inout lhs:T, rhs:T) { lhs.storage += rhs.storage }
-func -=<T:Float4>(inout lhs:T, rhs:T) { lhs.storage -= rhs.storage }
-func *=<T:Float4>(inout lhs:T, rhs:T) { lhs.storage *= rhs.storage }
-func /=<T:Float4>(inout lhs:T, rhs:T) { lhs.storage /= rhs.storage }
+func +=<T:Scalar4>(inout lhs:T, rhs:T) { lhs.storage += rhs.storage }
+func -=<T:Scalar4>(inout lhs:T, rhs:T) { lhs.storage -= rhs.storage }
+func *=<T:Scalar4>(inout lhs:T, rhs:T) { lhs.storage *= rhs.storage }
+func /=<T:Scalar4>(inout lhs:T, rhs:T) { lhs.storage /= rhs.storage }
 
-func ==<T:Float4>(lhs:T, rhs:T) -> Bool { return float4_equal(lhs.storage, rhs.storage) }
-func ~==<T:Float4>(lhs:T, rhs:T) -> Bool { return float4_nearly_equal(lhs.storage, rhs.storage) }
+func ==<T:Scalar4>(lhs:T, rhs:T) -> Bool { return float4_equal(lhs.storage, rhs.storage) }
+func ~==<T:Scalar4>(lhs:T, rhs:T) -> Bool { return float4_nearly_equal(lhs.storage, rhs.storage) }
 
-func *<T:Float4>(lhs:T, rhs:Float) -> T { return T(lhs.storage * float4(rhs)) }
+func *<T:Scalar4>(lhs:T, rhs:Scalar) -> T { return T(lhs.storage * scalar4(rhs)) }
 
 
 
 //
 // MARK: - Point
 //
-struct Point : Float2 {
-  var storage:float2
+struct Point : Scalar2 {
+  var storage:scalar2
 
-  init() { storage = float2() }
-  init(x:Float, y:Float) { self.init(x, y) }
-  init(_ storage:float2) { self.storage = storage }
+  init() { storage = scalar2() }
+  init(x:Scalar, y:Scalar) { self.init(x, y) }
+  init(_ storage:scalar2) { self.storage = storage }
 }
 
 
@@ -273,19 +278,19 @@ struct Point : Float2 {
 //
 // MARK: - Size
 //
-struct Size : Float2 {
-  var storage:float2
+struct Size : Scalar2 {
+  var storage:scalar2
 
-  init() { storage = float2() }
-  init(_ storage:float2) { self.storage = storage }
-  init(width:Float, height:Float) { storage = float2(width, height) }
+  init() { storage = scalar2() }
+  init(_ storage:scalar2) { self.storage = storage }
+  init(width:Scalar, height:Scalar) { storage = scalar2(width, height) }
 
-  var width:Float {
+  var width:Scalar {
     get { return x }
     set { x = newValue }
   }
 
-  var height:Float {
+  var height:Scalar {
     get { return y }
     set { y = newValue }
   }
@@ -295,10 +300,10 @@ struct Size : Float2 {
 //
 // MARK: - Lerp
 //
-func lerp<T:InterpolateArithmeticType>(from:T, _ to:T) -> (Float) -> T {
+func lerp<T:InterpolateArithmeticType>(from:T, _ to:T) -> (Scalar) -> T {
   let d = to - from
 
-  func __lerp(t:Float) -> T {
+  func __lerp(t:Scalar) -> T {
     return from + d * t
   }
   return __lerp

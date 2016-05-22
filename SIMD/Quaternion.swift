@@ -2,22 +2,22 @@
 import simd
 
 
-struct Quaternion : Float4, CustomStringConvertible {
+struct Quaternion : Scalar4, CustomStringConvertible {
 
-  var storage:float4
+  var storage:scalar4
 
   static let zero = Quaternion(0, 0, 0, 0)
   static let identity = Quaternion(0, 0, 0, 1)
 
   init() {
-    storage = float4()
+    storage = scalar4()
   }
 
   init(_ q:Quaternion) {
     storage = q.storage
   }
 
-  init(_ storage:float4) {
+  init(_ storage:scalar4) {
     self.storage = storage
   }
 
@@ -39,7 +39,7 @@ struct Quaternion : Float4, CustomStringConvertible {
     if scale ~= 0 || scale ~= .TwoPi {
       return Vector.z
     } else {
-      var scaled = storage / float4(scale)
+      var scaled = storage / scalar4(scale)
       scaled.w = acos(w) * 2
       return Vector(scaled)
     }
@@ -83,7 +83,7 @@ func *(lhs: Quaternion, rhs: Vector) -> Vector {
 }
 
 func *(lhs: Quaternion, rhs: Scalar) -> Quaternion {
-  return Quaternion(lhs.storage * float4(rhs))
+  return Quaternion(lhs.storage * scalar4(rhs))
 }
 
 //func lerp(from:Quaternion, to:Quaternion) -> (Float) -> Quaternion {
