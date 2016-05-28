@@ -113,7 +113,7 @@ extension Scalar {
     public static let TwoPi = Scalar(M_PI * 2)
     public static let DegreesPerRadian = 180 / Pi
     public static let RadiansPerDegree = Pi / 180
-    public static let Epsilon = Scalar(DBL_EPSILON)
+    public static let Epsilon = Scalar(0.0001)
 }
 
 public func ~=(lhs: Scalar, rhs: Scalar) -> Bool {
