@@ -1,2 +1,3 @@
 language: objective-c
+osx_image: xcode7.3
 script: xctool test -project Tests/UnitTests.xcodeproj -scheme UnitTests -sdk iphonesimulator
