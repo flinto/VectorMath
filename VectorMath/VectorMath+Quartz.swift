@@ -108,7 +108,7 @@ extension Vector3 {
     public init(_ size:CGSize) {
         self.x = size.width
         self.y = size.height
-        self.z = 0
+        self.z = 1
     }
 
     public func toPoint() -> CGPoint {
