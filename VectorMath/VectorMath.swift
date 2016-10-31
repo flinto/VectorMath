@@ -362,7 +362,7 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
         return self + (v - self) * t
     }
 
-    public var isZero:Bool {
+    public var isZeroAngle:Bool {
         return x % 360 == 0 && y % 360 == 0 && z % 360 == 0
     }
 
