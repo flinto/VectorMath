@@ -1094,6 +1094,10 @@ extension Matrix4: Equatable, Hashable, CustomStringConvertible {
         return self * Matrix4(translation: t)
     }
 
+    public func translate(t:CGPoint) -> Matrix4 {
+        return self * Matrix4(translation: Vector3(t))
+    }
+
     public func rotate(v:Vector3) -> Matrix4 {
 
         func rotateX(theta:Scalar) -> Matrix4 {
