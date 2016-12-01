@@ -113,11 +113,22 @@ extension Scalar {
     public static let TwoPi = Scalar(M_PI * 2)
     public static let DegreesPerRadian = 180 / Pi
     public static let RadiansPerDegree = Pi / 180
-    public static let Epsilon = Scalar(0.0001)
+
+    public static let epsilon:CGFloat = 1e-12
+    public static let machineEpsilon  = CGFloat(DBL_EPSILON)
+
+    public static let curvetimeEpsilon:CGFloat     = 4e-7
+    public static let geometricEpsilon:CGFloat     = 1e-7
+    public static let windingEpsilon:CGFloat       = 1e-8
+    public static let trigonometricEpsilon:CGFloat = 1e-8
+    public static let clippingEpsilon:CGFloat      = 1e-10
+
+    public static let kappa:CGFloat = 4 * (sqrt(2) - 1) / 3
+
 }
 
 public func ~=(lhs: Scalar, rhs: Scalar) -> Bool {
-    return abs(lhs - rhs) < .Epsilon
+    return abs(lhs - rhs) < .epsilon
 }
 
 //MARK: Vector2
@@ -409,9 +420,9 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
 
     public func vectorWithEpsilon() -> Vector3 {
         var val = self
-        if abs(val.x) < Scalar.Epsilon { val.x = Scalar.Epsilon }
-        if abs(val.y) < Scalar.Epsilon { val.y = Scalar.Epsilon }
-        if abs(val.z) < Scalar.Epsilon { val.z = Scalar.Epsilon }
+        if abs(val.x) < Scalar.geometricEpsilon { val.x = Scalar.geometricEpsilon }
+        if abs(val.y) < Scalar.geometricEpsilon { val.y = Scalar.geometricEpsilon }
+        if abs(val.z) < Scalar.geometricEpsilon { val.z = Scalar.geometricEpsilon }
         return val
     }
 
@@ -607,10 +618,10 @@ extension Vector4: Equatable, Hashable {
 
     public func vectorWithEpsilon() -> Vector4 {
         var val = self
-        if abs(val.x) < Scalar.Epsilon { val.x = Scalar.Epsilon }
-        if abs(val.y) < Scalar.Epsilon { val.y = Scalar.Epsilon }
-        if abs(val.z) < Scalar.Epsilon { val.z = Scalar.Epsilon }
-        if abs(val.w) < Scalar.Epsilon { val.w = Scalar.Epsilon }
+        if abs(val.x) < Scalar.geometricEpsilon { val.x = Scalar.geometricEpsilon }
+        if abs(val.y) < Scalar.geometricEpsilon { val.y = Scalar.geometricEpsilon }
+        if abs(val.z) < Scalar.geometricEpsilon { val.z = Scalar.geometricEpsilon }
+        if abs(val.w) < Scalar.geometricEpsilon { val.w = Scalar.geometricEpsilon }
         return val
     }
 
