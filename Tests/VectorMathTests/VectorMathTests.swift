@@ -163,7 +163,7 @@ class Matrix4Tests: XCTestCase {
 
     func testDecompose() {
 
-        let mt = CATransform3DIdentity.rotate(vector: Vector3(0, 0, 90)).scale(1, 5.5, 3).translate(1, 0, 3)
+        let mt = CATransform3DIdentity.rotate(Vector3(0, 0, 90)).scale(1, 5.5, 3).translate(1, 0, 3)
         let m = Matrix4(mt)
         let (t, r, s) = m
             .decompose()
@@ -185,18 +185,18 @@ class Matrix4Tests: XCTestCase {
         let r = Vector3(30, 0, 90)
         let s = Vector3(1, 5.5, 3)
         let t = Vector3(1, 0, 3)
-        var ct = CATransform3DIdentity.rotate(vector: r).scale(vector:s).translate(vector:t)
+        var ct = CATransform3DIdentity.rotate(r).scale(s).translate(t)
         var m = Matrix4(ct)
 
         var mm = Matrix4.Identity.rotate(r).scale(s).translate(t)
         XCTAssertTrue(m ~= mm, "\(m) != \(mm)")
 
-        ct = CATransform3DIdentity.translate(vector: t).rotate(vector: r).scale(vector: s)
+        ct = CATransform3DIdentity.translate(t).rotate(r).scale(s)
         m = Matrix4(ct)
         mm = Matrix4.Identity.translate(t).rotate(r).scale(s)
         XCTAssertTrue(m ~= mm, "\(m) != \(mm)")
 
-        ct = CATransform3DIdentity.translate(vector: -t).rotate(vector: -r).scale(vector: -s)
+        ct = CATransform3DIdentity.translate(-t).rotate(-r).scale(-s)
         m = Matrix4(ct)
         mm = Matrix4.Identity.translate(-t).rotate(-r).scale(-s)
         XCTAssertTrue(m ~= mm, "\(m) != \(mm)")
