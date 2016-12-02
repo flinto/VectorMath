@@ -398,16 +398,12 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
         return x ~= 1.0 && y ~= 1.0 && z ~= 1.0
     }
 
-    public func clamp(minV:Scalar, _ maxV:Scalar) -> Vector3 {
+    public func clamped(minV:Scalar, _ maxV:Scalar) -> Vector3 {
         var r = self
-        r.clampInPlace(minV, maxV)
+        r.x = max(minV, min(maxV, r.x))
+        r.y = max(minV, min(maxV, r.y))
+        r.z = max(minV, min(maxV, r.z))
         return r
-    }
-
-    mutating public func clampInPlace(minV:Scalar, _ maxV:Scalar) {
-        x = max(minV, min(maxV, x))
-        y = max(minV, min(maxV, y))
-        z = max(minV, min(maxV, z))
     }
 
     public func makeFinte() -> Vector3 {
