@@ -114,17 +114,38 @@ extension Scalar {
     public static let DegreesPerRadian = 180 / Pi
     public static let RadiansPerDegree = Pi / 180
 
-    public static let epsilon:CGFloat = 1e-12
-    public static let machineEpsilon  = CGFloat(DBL_EPSILON)
+    /**
+     A very small absolute value used to check if a value is very close to
+     zero. The value should be large enough to offset any floating point
+     noise, but small enough to be meaningful in computation in a nominal
+     range (see `machineEpsilon`).
+     
+     **References:**
 
-    public static let curvetimeEpsilon:CGFloat     = 4e-7
-    public static let geometricEpsilon:CGFloat     = 1e-7
-    public static let windingEpsilon:CGFloat       = 1e-8
-    public static let trigonometricEpsilon:CGFloat = 1e-8
-    public static let clippingEpsilon:CGFloat      = 1e-10
+     * http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
+     * http://www.cs.berkeley.edu/~wkahan/Math128/Cubic.pdf
+     */
+    public static let epsilon:Scalar = 1e-12
+    /**
+     * The machine epsilon for a double precision (64bit) is
+     * 2.220446049250313e-16.
+     *
+     * The constant `machineEpsilon` here refers to the constants δ and ε
+     * such that, the error introduced by addition, multiplication on a
+     * 64bit float will be less than δ and ε. That is to say,
+     * for all X and Y representable by a `double`, S and P be their
+     * 'exact' sum and product respectively, then
+     * |S - (x+y)| <= δ|S|, and |P - (x*y)| <= ε|P|.
+     * - note:
+     This amounts to about half of the actual machine epsilon.
+     */
+    public static let machineEpsilon:Scalar  =  1.12e-16 // CGFloat(DBL_EPSILON)
 
-    public static let kappa:CGFloat = 4 * (sqrt(2) - 1) / 3
-
+    /**
+     The actual machine epsilon for a double precision since `machineEpsilon` is 
+     about half of this.
+     */
+    public static let actualMachineEpsilon = Scalar(DBL_EPSILON)
 }
 
 public func ~=(lhs: Scalar, rhs: Scalar) -> Bool {
