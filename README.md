@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/nicklockwood/VectorMath.svg)](https://travis-ci.org/nicklockwood/VectorMath)
+[![Build Status](https://travis-ci.org/flinto/VectorMath.svg)](https://travis-ci.org/flinto/VectorMath)
 
 
 Purpose
@@ -13,13 +14,13 @@ VectorMath also provides a  handy replacement for the GLKit vector math types an
 VectorMath is a completely standalone library, relying only on the Foundation framework. However, it provides optional compatibility exensions for SceneKit and Quartz (CoreGraphics/CoreAnimation) for easy interoperability with UIKit, AppKit, SpriteKit and SceneKit.
 
 VectorMath is designed to be efficient, but has not been heavily optimized yet, and does not yet take advantage of architecture-specific hardware acceleration using the Accelerate framework.
- 
- 
+
+
 Aknowledgements
 ----------------
 
 Many of the algorithms used in VectorMath were ported or adapted from the Kazmath vector math library for C (https://github.com/Kazade/kazmath), or derived from the awesome Matrix and Quaternion FAQ (http://www.j3d.org/matrix_faq/matrfaq_latest.html).
- 
+
 
 Supported OS & SDK Versions
 -----------------------------
@@ -60,7 +61,7 @@ These represent homogenous 3x3 and 4x4 transform matrices, respectively.
     Quaternion
 
 This represents a rotation in 3D space. It has the same structure as Vector4D, but is defined as a different type due to the different use cases and methods.
- 
+
 All the VectorMath types conform to Equatable and Hashable, so they can be stored in Swift dictionaries.
 
 
