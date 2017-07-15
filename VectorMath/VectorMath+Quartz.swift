@@ -40,6 +40,10 @@ extension CGPoint {
     public init(_ v: Vector2) {
         self.init(x: CGFloat(v.x), y: CGFloat(v.y))
     }
+
+    public init(_ v: Vector3) {
+        self.init(x: CGFloat(v.x), y: CGFloat(v.y))
+    }
 }
 
 extension CGSize {
@@ -110,10 +114,6 @@ extension Vector3 {
         self.y = size.height
         self.z = 1
     }
-
-    public func toPoint() -> CGPoint {
-        return CGPointMake(x, y)
-    }
 }
 
 extension Matrix3 {
@@ -142,36 +142,36 @@ extension Matrix4 {
     }
 }
 
-func + (lhs:Vector3, rhs:CGPoint) -> Vector3 { return lhs + Vector3(rhs) }
-func - (lhs:Vector3, rhs:CGPoint) -> Vector3 { return lhs - Vector3(rhs) }
-func += (inout lhs:Vector3, rhs:CGPoint)     { lhs += Vector3(rhs)}
-func -= (inout lhs:Vector3, rhs:CGPoint)     { lhs -= Vector3(rhs)}
+public func + (lhs:Vector3, rhs:CGPoint) -> Vector3 { return lhs + Vector3(rhs) }
+public func - (lhs:Vector3, rhs:CGPoint) -> Vector3 { return lhs - Vector3(rhs) }
+public func += (lhs:inout Vector3, rhs:CGPoint)     { lhs += Vector3(rhs)}
+public func -= (lhs:inout Vector3, rhs:CGPoint)     { lhs -= Vector3(rhs)}
 
-func + (lhs:CGPoint, rhs:Vector3) -> CGPoint { return lhs + rhs.toPoint() }
-func - (lhs:CGPoint, rhs:Vector3) -> CGPoint { return lhs - rhs.toPoint() }
-func += (inout lhs:CGPoint, rhs:Vector3)     { lhs += rhs.toPoint()}
-func -= (inout lhs:CGPoint, rhs:Vector3)     { lhs -= rhs.toPoint()}
+//public func + (lhs:CGPoint, rhs:Vector3) -> CGPoint { return lhs + CGPoint(rhs) }
+//public func - (lhs:CGPoint, rhs:Vector3) -> CGPoint { return lhs - CGPoint(rhs) }
+//public func += (lhs:inout CGPoint, rhs:Vector3)     { lhs += CGPoint(rhs)}
+//public func -= (lhs:inout CGPoint, rhs:Vector3)     { lhs -= CGPoint(rhs)}
 
-func * (lhs:Vector3, rhs:CGSize) ->Vector3  { return Vector3(x: lhs.x * rhs.width, y: lhs.y * rhs.height, z:lhs.z) }
-func / (lhs:Vector3, rhs:CGSize) ->Vector3  { return Vector3(x: lhs.x / rhs.width, y: lhs.y / rhs.height, z:lhs.z) }
-func * (lhs:Vector3, rhs:CGPoint) ->Vector3 { return Vector3(x: lhs.x * rhs.x, y: lhs.y * rhs.y, z:lhs.z) }
-func / (lhs:Vector3, rhs:CGPoint) ->Vector3 { return Vector3(x: lhs.x / rhs.x, y: lhs.y / rhs.y, z:lhs.z) }
+public func * (lhs:Vector3, rhs:CGSize) ->Vector3  { return Vector3(x: lhs.x * rhs.width, y: lhs.y * rhs.height, z:lhs.z) }
+public func / (lhs:Vector3, rhs:CGSize) ->Vector3  { return Vector3(x: lhs.x / rhs.width, y: lhs.y / rhs.height, z:lhs.z) }
+public func * (lhs:Vector3, rhs:CGPoint) ->Vector3 { return Vector3(x: lhs.x * rhs.x, y: lhs.y * rhs.y, z:lhs.z) }
+public func / (lhs:Vector3, rhs:CGPoint) ->Vector3 { return Vector3(x: lhs.x / rhs.x, y: lhs.y / rhs.y, z:lhs.z) }
 
-func *= (inout lhs:Vector3, rhs:CGSize)  { lhs.x *= rhs.width; lhs.y *= rhs.height }
-func /= (inout lhs:Vector3, rhs:CGSize)  { lhs.x /= rhs.width; lhs.y /= rhs.height }
-func *= (inout lhs:Vector3, rhs:CGPoint) { lhs.x *= rhs.x; lhs.y *= rhs.y }
-func /= (inout lhs:Vector3, rhs:CGPoint) { lhs.x /= rhs.x; lhs.y /= rhs.y }
+public func *= (lhs:inout Vector3, rhs:CGSize)  { lhs.x *= rhs.width; lhs.y *= rhs.height }
+public func /= (lhs:inout Vector3, rhs:CGSize)  { lhs.x /= rhs.width; lhs.y /= rhs.height }
+public func *= (lhs:inout Vector3, rhs:CGPoint) { lhs.x *= rhs.x; lhs.y *= rhs.y }
+public func /= (lhs:inout Vector3, rhs:CGPoint) { lhs.x /= rhs.x; lhs.y /= rhs.y }
 
 
-func * (lhs:CGSize, rhs:Vector3) ->CGSize   { return CGSizeMake(lhs.width * rhs.x, lhs.height * rhs.y) }
-func / (lhs:CGSize, rhs:Vector3) ->CGSize   { return CGSizeMake(lhs.width / rhs.x, lhs.height / rhs.y) }
-func * (lhs:CGPoint, rhs:Vector3) ->CGPoint { return CGPointMake(lhs.x * rhs.x, lhs.y * rhs.y) }
-func / (lhs:CGPoint, rhs:Vector3) ->CGPoint { return CGPointMake(lhs.x / rhs.x, lhs.y / rhs.y) }
+public func * (lhs:CGSize, rhs:Vector3) ->CGSize   { return CGSize(width: lhs.width * rhs.x, height: lhs.height * rhs.y) }
+public func / (lhs:CGSize, rhs:Vector3) ->CGSize   { return CGSize(width: lhs.width / rhs.x, height: lhs.height / rhs.y) }
+public func * (lhs:CGPoint, rhs:Vector3) ->CGPoint { return CGPoint(x: lhs.x * rhs.x, y: lhs.y * rhs.y) }
+public func / (lhs:CGPoint, rhs:Vector3) ->CGPoint { return CGPoint(x: lhs.x / rhs.x, y: lhs.y / rhs.y) }
 
-func *= (inout lhs:CGSize, rhs:Vector3)  { lhs.width *= rhs.x; lhs.height *= rhs.y }
-func /= (inout lhs:CGSize, rhs:Vector3)  { lhs.width /= rhs.x; lhs.height /= rhs.y }
-func *= (inout lhs:CGPoint, rhs:Vector3) { lhs.x *= rhs.x; lhs.y *= rhs.y }
-func /= (inout lhs:CGPoint, rhs:Vector3) { lhs.x /= rhs.x; lhs.y /= rhs.y }
+public func *= (lhs:inout CGSize, rhs:Vector3)  { lhs.width *= rhs.x; lhs.height *= rhs.y }
+public func /= (lhs:inout CGSize, rhs:Vector3)  { lhs.width /= rhs.x; lhs.height /= rhs.y }
+public func *= (lhs:inout CGPoint, rhs:Vector3) { lhs.x *= rhs.x; lhs.y *= rhs.y }
+public func /= (lhs:inout CGPoint, rhs:Vector3) { lhs.x /= rhs.x; lhs.y /= rhs.y }
 
 
 
