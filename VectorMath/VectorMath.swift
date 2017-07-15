@@ -33,6 +33,7 @@
 
 
 import Foundation
+import CoreGraphics
 
 //MARK: Types
 
