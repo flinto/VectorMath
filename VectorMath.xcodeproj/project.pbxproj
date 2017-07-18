@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E2D794A1F1E929500E44FB2 /* VectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E2D79481F1E929500E44FB2 /* VectorMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E2D794E1F1E930000E44FB2 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87CF9F1F19C29E007F5A63 /* VectorMath.swift */; };
+		6E4BA9E01F1E96F4000E5C34 /* VectorMath+Quartz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87CFA01F19C29E007F5A63 /* VectorMath+Quartz.swift */; };
+		6E4BA9E11F1E96F4000E5C34 /* VectorMath+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6D48D1F19D1E6002CD441 /* VectorMath+Array.swift */; };
 		6E5D8B5C1F19DB0100E2928B /* VectorMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED6D4941F19D23C002CD441 /* VectorMath.framework */; };
-		6E87CFA21F19C29E007F5A63 /* VectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E87CF9E1F19C29E007F5A63 /* VectorMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6E87CFA31F19C29E007F5A63 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87CF9F1F19C29E007F5A63 /* VectorMath.swift */; };
-		6E87CFA41F19C29E007F5A63 /* VectorMath+Quartz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87CFA01F19C29E007F5A63 /* VectorMath+Quartz.swift */; };
-		6ED6D48E1F19D1FA002CD441 /* VectorMath+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6D48D1F19D1E6002CD441 /* VectorMath+Array.swift */; };
-		6ED6D4981F19D23C002CD441 /* VectorMathiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ED6D4961F19D23C002CD441 /* VectorMathiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ED6D4981F19D23C002CD441 /* VectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ED6D4961F19D23C002CD441 /* VectorMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6ED6D49C1F19D259002CD441 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87CF9F1F19C29E007F5A63 /* VectorMath.swift */; };
 		6ED6D49D1F19D259002CD441 /* VectorMath+Quartz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87CFA01F19C29E007F5A63 /* VectorMath+Quartz.swift */; };
 		6ED6D49E1F19D259002CD441 /* VectorMath+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6D48D1F19D1E6002CD441 /* VectorMath+Array.swift */; };
@@ -30,33 +30,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E2D79461F1E929500E44FB2 /* VectorMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VectorMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E2D79481F1E929500E44FB2 /* VectorMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorMath.h; sourceTree = "<group>"; };
+		6E2D79491F1E929500E44FB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E5D8B571F19DB0100E2928B /* VectorMathTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VectorMathTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E87CF8A1F19C1C1007F5A63 /* VectorMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VectorMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E87CF9D1F19C29E007F5A63 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E87CF9E1F19C29E007F5A63 /* VectorMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorMath.h; sourceTree = "<group>"; };
 		6E87CF9F1F19C29E007F5A63 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
 		6E87CFA01F19C29E007F5A63 /* VectorMath+Quartz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VectorMath+Quartz.swift"; sourceTree = "<group>"; };
 		6ED6D48D1F19D1E6002CD441 /* VectorMath+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VectorMath+Array.swift"; sourceTree = "<group>"; };
 		6ED6D4941F19D23C002CD441 /* VectorMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VectorMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6ED6D4961F19D23C002CD441 /* VectorMathiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorMathiOS.h; sourceTree = "<group>"; };
+		6ED6D4961F19D23C002CD441 /* VectorMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorMath.h; sourceTree = "<group>"; };
 		6ED6D4971F19D23C002CD441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6ED897F71F19DB6900DEAF5D /* VectorMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorMathTests.swift; sourceTree = "<group>"; };
 		6ED897F91F19DBA400DEAF5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6E2D79421F1E929500E44FB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E5D8B541F19DB0100E2928B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6E5D8B5C1F19DB0100E2928B /* VectorMath.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E87CF861F19C1C1007F5A63 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E2D79471F1E929500E44FB2 /* VectorMath */ = {
+			isa = PBXGroup;
+			children = (
+				6E2D79481F1E929500E44FB2 /* VectorMath.h */,
+				6E2D79491F1E929500E44FB2 /* Info.plist */,
+			);
+			path = VectorMath;
+			sourceTree = "<group>";
+		};
 		6E5D8B581F19DB0100E2928B /* VectorMathTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +96,7 @@
 				6E87CF8C1F19C1C1007F5A63 /* VectorMath */,
 				6ED6D4951F19D23C002CD441 /* VectorMathiOS */,
 				6E5D8B581F19DB0100E2928B /* VectorMathTests */,
+				6E2D79471F1E929500E44FB2 /* VectorMath */,
 				6E87CF8B1F19C1C1007F5A63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,9 +104,9 @@
 		6E87CF8B1F19C1C1007F5A63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6E87CF8A1F19C1C1007F5A63 /* VectorMath.framework */,
 				6ED6D4941F19D23C002CD441 /* VectorMath.framework */,
 				6E5D8B571F19DB0100E2928B /* VectorMathTests.xctest */,
+				6E2D79461F1E929500E44FB2 /* VectorMath.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,7 +126,7 @@
 		6ED6D4951F19D23C002CD441 /* VectorMathiOS */ = {
 			isa = PBXGroup;
 			children = (
-				6ED6D4961F19D23C002CD441 /* VectorMathiOS.h */,
+				6ED6D4961F19D23C002CD441 /* VectorMath.h */,
 				6ED6D4971F19D23C002CD441 /* Info.plist */,
 			);
 			path = VectorMathiOS;
@@ -123,11 +135,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6E87CF871F19C1C1007F5A63 /* Headers */ = {
+		6E2D79431F1E929500E44FB2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E87CFA21F19C29E007F5A63 /* VectorMath.h in Headers */,
+				6E2D794A1F1E929500E44FB2 /* VectorMath.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,13 +147,31 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ED6D4981F19D23C002CD441 /* VectorMathiOS.h in Headers */,
+				6ED6D4981F19D23C002CD441 /* VectorMath.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		6E2D79451F1E929500E44FB2 /* VectorMath_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E2D794B1F1E929500E44FB2 /* Build configuration list for PBXNativeTarget "VectorMath_macOS" */;
+			buildPhases = (
+				6E2D79411F1E929500E44FB2 /* Sources */,
+				6E2D79421F1E929500E44FB2 /* Frameworks */,
+				6E2D79431F1E929500E44FB2 /* Headers */,
+				6E2D79441F1E929500E44FB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VectorMath_macOS;
+			productName = VectorMath;
+			productReference = 6E2D79461F1E929500E44FB2 /* VectorMath.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		6E5D8B561F19DB0100E2928B /* VectorMathTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E5D8B5F1F19DB0100E2928B /* Build configuration list for PBXNativeTarget "VectorMathTests" */;
@@ -160,27 +190,9 @@
 			productReference = 6E5D8B571F19DB0100E2928B /* VectorMathTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6E87CF891F19C1C1007F5A63 /* VectorMath */ = {
+		6ED6D4931F19D23C002CD441 /* VectorMath_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E87CF921F19C1C1007F5A63 /* Build configuration list for PBXNativeTarget "VectorMath" */;
-			buildPhases = (
-				6E87CF851F19C1C1007F5A63 /* Sources */,
-				6E87CF861F19C1C1007F5A63 /* Frameworks */,
-				6E87CF871F19C1C1007F5A63 /* Headers */,
-				6E87CF881F19C1C1007F5A63 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = VectorMath;
-			productName = VectorMath;
-			productReference = 6E87CF8A1F19C1C1007F5A63 /* VectorMath.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		6ED6D4931F19D23C002CD441 /* VectorMathiOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6ED6D4991F19D23C002CD441 /* Build configuration list for PBXNativeTarget "VectorMathiOS" */;
+			buildConfigurationList = 6ED6D4991F19D23C002CD441 /* Build configuration list for PBXNativeTarget "VectorMath_iOS" */;
 			buildPhases = (
 				6ED6D48F1F19D23C002CD441 /* Sources */,
 				6ED6D4901F19D23C002CD441 /* Frameworks */,
@@ -191,7 +203,7 @@
 			);
 			dependencies = (
 			);
-			name = VectorMathiOS;
+			name = VectorMath_iOS;
 			productName = VectorMathiOS;
 			productReference = 6ED6D4941F19D23C002CD441 /* VectorMath.framework */;
 			productType = "com.apple.product-type.framework";
@@ -206,14 +218,13 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Flinto;
 				TargetAttributes = {
+					6E2D79451F1E929500E44FB2 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 					6E5D8B561F19DB0100E2928B = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
-					};
-					6E87CF891F19C1C1007F5A63 = {
-						CreatedOnToolsVersion = 8.3.3;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
 					};
 					6ED6D4931F19D23C002CD441 = {
 						CreatedOnToolsVersion = 9.0;
@@ -233,22 +244,22 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6E87CF891F19C1C1007F5A63 /* VectorMath */,
-				6ED6D4931F19D23C002CD441 /* VectorMathiOS */,
+				6E2D79451F1E929500E44FB2 /* VectorMath_macOS */,
+				6ED6D4931F19D23C002CD441 /* VectorMath_iOS */,
 				6E5D8B561F19DB0100E2928B /* VectorMathTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6E5D8B551F19DB0100E2928B /* Resources */ = {
+		6E2D79441F1E929500E44FB2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E87CF881F19C1C1007F5A63 /* Resources */ = {
+		6E5D8B551F19DB0100E2928B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -265,21 +276,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6E2D79411F1E929500E44FB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E4BA9E11F1E96F4000E5C34 /* VectorMath+Array.swift in Sources */,
+				6E2D794E1F1E930000E44FB2 /* VectorMath.swift in Sources */,
+				6E4BA9E01F1E96F4000E5C34 /* VectorMath+Quartz.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E5D8B531F19DB0100E2928B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6ED897F81F19DB6D00DEAF5D /* VectorMathTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E87CF851F19C1C1007F5A63 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6ED6D48E1F19D1FA002CD441 /* VectorMath+Array.swift in Sources */,
-				6E87CFA31F19C29E007F5A63 /* VectorMath.swift in Sources */,
-				6E87CFA41F19C29E007F5A63 /* VectorMath+Quartz.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,12 +309,64 @@
 /* Begin PBXTargetDependency section */
 		6E5D8B5E1F19DB0100E2928B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6ED6D4931F19D23C002CD441 /* VectorMathiOS */;
+			target = 6ED6D4931F19D23C002CD441 /* VectorMath_iOS */;
 			targetProxy = 6E5D8B5D1F19DB0100E2928B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		6E2D794C1F1E929500E44FB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = VectorMath/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMath;
+				PRODUCT_NAME = VectorMath;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		6E2D794D1F1E929500E44FB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = VectorMath/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMath;
+				PRODUCT_NAME = VectorMath;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		6E5D8B601F19DB0100E2928B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -456,53 +519,6 @@
 			};
 			name = Release;
 		};
-		6E87CF931F19C1C1007F5A63 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = VectorMath/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMath;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		6E87CF941F19C1C1007F5A63 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = VectorMath/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMath;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
 		6ED6D49A1F19D23C002CD441 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -527,7 +543,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMath;
-				PRODUCT_MODULE_NAME = VectorMath;
 				PRODUCT_NAME = VectorMath;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -561,7 +576,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMath;
-				PRODUCT_MODULE_NAME = VectorMath;
 				PRODUCT_NAME = VectorMath;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -575,6 +589,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6E2D794B1F1E929500E44FB2 /* Build configuration list for PBXNativeTarget "VectorMath_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E2D794C1F1E929500E44FB2 /* Debug */,
+				6E2D794D1F1E929500E44FB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6E5D8B5F1F19DB0100E2928B /* Build configuration list for PBXNativeTarget "VectorMathTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -593,16 +616,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E87CF921F19C1C1007F5A63 /* Build configuration list for PBXNativeTarget "VectorMath" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E87CF931F19C1C1007F5A63 /* Debug */,
-				6E87CF941F19C1C1007F5A63 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6ED6D4991F19D23C002CD441 /* Build configuration list for PBXNativeTarget "VectorMathiOS" */ = {
+		6ED6D4991F19D23C002CD441 /* Build configuration list for PBXNativeTarget "VectorMath_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6ED6D49A1F19D23C002CD441 /* Debug */,

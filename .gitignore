@@ -2,3 +2,5 @@
 *.xctimeline
 *.xcworkspace*
 *.xcarchive
+Carthage/Build
+VectorMath.framework.zip

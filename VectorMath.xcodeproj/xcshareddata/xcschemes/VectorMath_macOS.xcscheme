@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6ED6D4931F19D23C002CD441"
-               BuildableName = "VectorMathiOS.framework"
-               BlueprintName = "VectorMathiOS"
+               BlueprintIdentifier = "6E2D79451F1E929500E44FB2"
+               BuildableName = "VectorMath.framework"
+               BlueprintName = "VectorMath_macOS"
                ReferencedContainer = "container:VectorMath.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,23 +29,13 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E5D8B561F19DB0100E2928B"
-               BuildableName = "VectorMathTests.xctest"
-               BlueprintName = "VectorMathTests"
-               ReferencedContainer = "container:VectorMath.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6ED6D4931F19D23C002CD441"
-            BuildableName = "VectorMathiOS.framework"
-            BlueprintName = "VectorMathiOS"
+            BlueprintIdentifier = "6E2D79451F1E929500E44FB2"
+            BuildableName = "VectorMath.framework"
+            BlueprintName = "VectorMath_macOS"
             ReferencedContainer = "container:VectorMath.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6ED6D4931F19D23C002CD441"
-            BuildableName = "VectorMathiOS.framework"
-            BlueprintName = "VectorMathiOS"
+            BlueprintIdentifier = "6E2D79451F1E929500E44FB2"
+            BuildableName = "VectorMath.framework"
+            BlueprintName = "VectorMath_macOS"
             ReferencedContainer = "container:VectorMath.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,9 +74,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6ED6D4931F19D23C002CD441"
-            BuildableName = "VectorMathiOS.framework"
-            BlueprintName = "VectorMathiOS"
+            BlueprintIdentifier = "6E2D79451F1E929500E44FB2"
+            BuildableName = "VectorMath.framework"
+            BlueprintName = "VectorMath_macOS"
             ReferencedContainer = "container:VectorMath.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

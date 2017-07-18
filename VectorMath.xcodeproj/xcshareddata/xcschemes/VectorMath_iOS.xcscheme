@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E87CF891F19C1C1007F5A63"
+               BlueprintIdentifier = "6ED6D4931F19D23C002CD441"
                BuildableName = "VectorMath.framework"
-               BlueprintName = "VectorMath"
+               BlueprintName = "VectorMath_iOS"
                ReferencedContainer = "container:VectorMath.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,9 +43,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6E87CF891F19C1C1007F5A63"
+            BlueprintIdentifier = "6ED6D4931F19D23C002CD441"
             BuildableName = "VectorMath.framework"
-            BlueprintName = "VectorMath"
+            BlueprintName = "VectorMath_iOS"
             ReferencedContainer = "container:VectorMath.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,9 +66,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6E87CF891F19C1C1007F5A63"
+            BlueprintIdentifier = "6ED6D4931F19D23C002CD441"
             BuildableName = "VectorMath.framework"
-            BlueprintName = "VectorMath"
+            BlueprintName = "VectorMath_iOS"
             ReferencedContainer = "container:VectorMath.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,9 +84,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6E87CF891F19C1C1007F5A63"
+            BlueprintIdentifier = "6ED6D4931F19D23C002CD441"
             BuildableName = "VectorMath.framework"
-            BlueprintName = "VectorMath"
+            BlueprintName = "VectorMath_iOS"
             ReferencedContainer = "container:VectorMath.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -2,11 +2,11 @@
 //  VectorMath.h
 //  VectorMath
 //
-//  Created by Kazuho Okui on 7/18/17.
+//  Created by Kazuho Okui on 7/14/17.
 //  Copyright © 2017 Flinto. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <UIKit/UIKit.h>
 
 //! Project version number for VectorMath.
 FOUNDATION_EXPORT double VectorMathVersionNumber;
