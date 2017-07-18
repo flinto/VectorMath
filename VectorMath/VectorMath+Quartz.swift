@@ -37,32 +37,32 @@ import QuartzCore
 
 extension CGPoint {
     
-    public init(_ v: Vector2) {
+    @inline(__always) public init(_ v: Vector2) {
         self.init(x: CGFloat(v.x), y: CGFloat(v.y))
     }
 
-    public init(_ v: Vector3) {
+    @inline(__always) public init(_ v: Vector3) {
         self.init(x: CGFloat(v.x), y: CGFloat(v.y))
     }
 }
 
 extension CGSize {
     
-    public init(_ v: Vector2) {
+    @inline(__always) public init(_ v: Vector2) {
         self.init(width: CGFloat(v.x), height: CGFloat(v.y))
     }
 }
 
 extension CGVector {
     
-    public init(_ v: Vector2) {
+    @inline(__always) public init(_ v: Vector2) {
         self.init(dx: CGFloat(v.x), dy: CGFloat(v.y))
     }
 }
 
 extension CGAffineTransform {
     
-    public init(_ m: Matrix3) {
+    @inline(__always) public init(_ m: Matrix3) {
         
         self.init(
             a: CGFloat(m.m11), b: CGFloat(m.m12),
@@ -74,7 +74,7 @@ extension CGAffineTransform {
 
 extension CATransform3D {
     
-    public init(_ m: Matrix4) {
+    @inline(__always) public init(_ m: Matrix4) {
         
         self.init(
             m11: m.m11, m12: m.m12, m13: m.m13, m14: m.m14,
@@ -89,27 +89,27 @@ extension CATransform3D {
 
 extension Vector2 {
     
-    public init(_ v: CGPoint) {
+    @inline(__always) public init(_ v: CGPoint) {
         self.init(x: v.x, y: v.y)
     }
     
-    public init(_ v: CGSize) {
+    @inline(__always) public init(_ v: CGSize) {
         self.init(x: v.width, y: v.height)
     }
     
-    public init(_ v: CGVector) {
+    @inline(__always) public init(_ v: CGVector) {
         self.init(x: v.dx, y: v.dy)
     }
 }
 
 extension Vector3 {
-    public init(_ point:CGPoint) {
+    @inline(__always) public init(_ point:CGPoint) {
         self.x = point.x
         self.y = point.y
         self.z = 0
     }
 
-    public init(_ size:CGSize) {
+    @inline(__always) public init(_ size:CGSize) {
         self.x = size.width
         self.y = size.height
         self.z = 1
@@ -142,36 +142,36 @@ extension Matrix4 {
     }
 }
 
-public func + (lhs:Vector3, rhs:CGPoint) -> Vector3 { return lhs + Vector3(rhs) }
-public func - (lhs:Vector3, rhs:CGPoint) -> Vector3 { return lhs - Vector3(rhs) }
-public func += (lhs:inout Vector3, rhs:CGPoint)     { lhs += Vector3(rhs)}
-public func -= (lhs:inout Vector3, rhs:CGPoint)     { lhs -= Vector3(rhs)}
+@inline(__always) public func + (lhs:Vector3, rhs:CGPoint) -> Vector3 { return lhs + Vector3(rhs) }
+@inline(__always) public func - (lhs:Vector3, rhs:CGPoint) -> Vector3 { return lhs - Vector3(rhs) }
+@inline(__always) public func += (lhs:inout Vector3, rhs:CGPoint)     { lhs += Vector3(rhs)}
+@inline(__always) public func -= (lhs:inout Vector3, rhs:CGPoint)     { lhs -= Vector3(rhs)}
 
 //public func + (lhs:CGPoint, rhs:Vector3) -> CGPoint { return lhs + CGPoint(rhs) }
 //public func - (lhs:CGPoint, rhs:Vector3) -> CGPoint { return lhs - CGPoint(rhs) }
 //public func += (lhs:inout CGPoint, rhs:Vector3)     { lhs += CGPoint(rhs)}
 //public func -= (lhs:inout CGPoint, rhs:Vector3)     { lhs -= CGPoint(rhs)}
 
-public func * (lhs:Vector3, rhs:CGSize) ->Vector3  { return Vector3(x: lhs.x * rhs.width, y: lhs.y * rhs.height, z:lhs.z) }
-public func / (lhs:Vector3, rhs:CGSize) ->Vector3  { return Vector3(x: lhs.x / rhs.width, y: lhs.y / rhs.height, z:lhs.z) }
-public func * (lhs:Vector3, rhs:CGPoint) ->Vector3 { return Vector3(x: lhs.x * rhs.x, y: lhs.y * rhs.y, z:lhs.z) }
-public func / (lhs:Vector3, rhs:CGPoint) ->Vector3 { return Vector3(x: lhs.x / rhs.x, y: lhs.y / rhs.y, z:lhs.z) }
+@inline(__always) public func * (lhs:Vector3, rhs:CGSize) ->Vector3  { return Vector3(x: lhs.x * rhs.width, y: lhs.y * rhs.height, z:lhs.z) }
+@inline(__always) public func / (lhs:Vector3, rhs:CGSize) ->Vector3  { return Vector3(x: lhs.x / rhs.width, y: lhs.y / rhs.height, z:lhs.z) }
+@inline(__always) public func * (lhs:Vector3, rhs:CGPoint) ->Vector3 { return Vector3(x: lhs.x * rhs.x, y: lhs.y * rhs.y, z:lhs.z) }
+@inline(__always) public func / (lhs:Vector3, rhs:CGPoint) ->Vector3 { return Vector3(x: lhs.x / rhs.x, y: lhs.y / rhs.y, z:lhs.z) }
 
-public func *= (lhs:inout Vector3, rhs:CGSize)  { lhs.x *= rhs.width; lhs.y *= rhs.height }
-public func /= (lhs:inout Vector3, rhs:CGSize)  { lhs.x /= rhs.width; lhs.y /= rhs.height }
-public func *= (lhs:inout Vector3, rhs:CGPoint) { lhs.x *= rhs.x; lhs.y *= rhs.y }
-public func /= (lhs:inout Vector3, rhs:CGPoint) { lhs.x /= rhs.x; lhs.y /= rhs.y }
+@inline(__always) public func *= (lhs:inout Vector3, rhs:CGSize)  { lhs.x *= rhs.width; lhs.y *= rhs.height }
+@inline(__always) public func /= (lhs:inout Vector3, rhs:CGSize)  { lhs.x /= rhs.width; lhs.y /= rhs.height }
+@inline(__always) public func *= (lhs:inout Vector3, rhs:CGPoint) { lhs.x *= rhs.x; lhs.y *= rhs.y }
+@inline(__always) public func /= (lhs:inout Vector3, rhs:CGPoint) { lhs.x /= rhs.x; lhs.y /= rhs.y }
 
 
-public func * (lhs:CGSize, rhs:Vector3) ->CGSize   { return CGSize(width: lhs.width * rhs.x, height: lhs.height * rhs.y) }
-public func / (lhs:CGSize, rhs:Vector3) ->CGSize   { return CGSize(width: lhs.width / rhs.x, height: lhs.height / rhs.y) }
-public func * (lhs:CGPoint, rhs:Vector3) ->CGPoint { return CGPoint(x: lhs.x * rhs.x, y: lhs.y * rhs.y) }
-public func / (lhs:CGPoint, rhs:Vector3) ->CGPoint { return CGPoint(x: lhs.x / rhs.x, y: lhs.y / rhs.y) }
+@inline(__always) public func * (lhs:CGSize, rhs:Vector3) ->CGSize   { return CGSize(width: lhs.width * rhs.x, height: lhs.height * rhs.y) }
+@inline(__always) public func / (lhs:CGSize, rhs:Vector3) ->CGSize   { return CGSize(width: lhs.width / rhs.x, height: lhs.height / rhs.y) }
+@inline(__always) public func * (lhs:CGPoint, rhs:Vector3) ->CGPoint { return CGPoint(x: lhs.x * rhs.x, y: lhs.y * rhs.y) }
+@inline(__always) public func / (lhs:CGPoint, rhs:Vector3) ->CGPoint { return CGPoint(x: lhs.x / rhs.x, y: lhs.y / rhs.y) }
 
-public func *= (lhs:inout CGSize, rhs:Vector3)  { lhs.width *= rhs.x; lhs.height *= rhs.y }
-public func /= (lhs:inout CGSize, rhs:Vector3)  { lhs.width /= rhs.x; lhs.height /= rhs.y }
-public func *= (lhs:inout CGPoint, rhs:Vector3) { lhs.x *= rhs.x; lhs.y *= rhs.y }
-public func /= (lhs:inout CGPoint, rhs:Vector3) { lhs.x /= rhs.x; lhs.y /= rhs.y }
+@inline(__always) public func *= (lhs:inout CGSize, rhs:Vector3)  { lhs.width *= rhs.x; lhs.height *= rhs.y }
+@inline(__always) public func /= (lhs:inout CGSize, rhs:Vector3)  { lhs.width /= rhs.x; lhs.height /= rhs.y }
+@inline(__always) public func *= (lhs:inout CGPoint, rhs:Vector3) { lhs.x *= rhs.x; lhs.y *= rhs.y }
+@inline(__always) public func /= (lhs:inout CGPoint, rhs:Vector3) { lhs.x /= rhs.x; lhs.y /= rhs.y }
 
 
 

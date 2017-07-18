@@ -42,7 +42,7 @@ public typealias Scalar = CGFloat
 public struct Vector2 : Codable {
     public var x: Scalar
     public var y: Scalar
-    public init(x:Scalar = 0, y:Scalar = 0) {
+    @inline(__always) public init(x:Scalar = 0, y:Scalar = 0) {
         self.x = x
         self.y = y
     }
@@ -52,7 +52,7 @@ public struct Vector3 : Codable {
     public var x: Scalar
     public var y: Scalar
     public var z: Scalar
-    public init(x:Scalar = 0, y:Scalar = 0, z:Scalar = 0) {
+    @inline(__always) public init(x:Scalar = 0, y:Scalar = 0, z:Scalar = 0) {
         self.x = x
         self.y = y
         self.z = z
@@ -150,18 +150,18 @@ extension Scalar {
 
 infix operator ~==  : ComparisonPrecedence
 
-public func ~==(lhs: Scalar, rhs: Scalar) -> Bool {
+@inline(__always) public func ~==(lhs: Scalar, rhs: Scalar) -> Bool {
     return abs(lhs - rhs) < .epsilon
 }
 
-public func ~==(lhs: Double, rhs: Double) -> Bool {
+@inline(__always) public func ~==(lhs: Double, rhs: Double) -> Bool {
     return abs(lhs - rhs) < Double(.epsilon)
 }
 
 
 infix operator !~==  : ComparisonPrecedence
 
-public func !~==(lhs: Scalar, rhs: Scalar) -> Bool {
+@inline(__always) public func !~==(lhs: Scalar, rhs: Scalar) -> Bool {
     return abs(lhs - rhs) > .epsilon
 }
 
@@ -190,11 +190,11 @@ extension Vector2: Equatable, Hashable {
         return -self
     }
     
-    public init(_ x: Scalar, _ y: Scalar) {
+    @inline(__always) public init(_ x: Scalar, _ y: Scalar) {
         self.init(x: x, y: y)
     }
     
-    public init(_ v: [Scalar]) {
+    @inline(__always) public init(_ v: [Scalar]) {
         
         assert(v.count == 2, "array must contain 2 elements, contained \(v.count)")
         
@@ -202,11 +202,11 @@ extension Vector2: Equatable, Hashable {
         y = v[1]
     }
     
-    public func dot(_ v: Vector2) -> Scalar {
+    @inline(__always) public func dot(_ v: Vector2) -> Scalar {
         return x * v.x + y * v.y
     }
     
-    public func cross(_ v: Vector2) -> Scalar {
+    @inline(__always) public func cross(_ v: Vector2) -> Scalar {
         return x * v.y - y * v.x
     }
     
@@ -244,7 +244,7 @@ extension Vector2: Equatable, Hashable {
         return atan2(cross, dot)
     }
     
-    public func interpolated(with v: Vector2, t: Scalar) -> Vector2 {
+    @inline(__always) public func interpolated(with v: Vector2, t: Scalar) -> Vector2 {
         return self + (v - self) * t
     }
 
@@ -275,27 +275,27 @@ extension Vector2: Equatable, Hashable {
 }
 
 extension Vector2 {
-    public static prefix func -(v: Vector2) -> Vector2 {
+    @inline(__always) public static prefix func -(v: Vector2) -> Vector2 {
         return Vector2(-v.x, -v.y)
     }
 
-    public static func +(lhs: Vector2, rhs: Vector2) -> Vector2 {
+    @inline(__always) public static func +(lhs: Vector2, rhs: Vector2) -> Vector2 {
         return Vector2(lhs.x + rhs.x, lhs.y + rhs.y)
     }
 
-    public static func -(lhs: Vector2, rhs: Vector2) -> Vector2 {
+    @inline(__always) public static func -(lhs: Vector2, rhs: Vector2) -> Vector2 {
         return Vector2(lhs.x - rhs.x, lhs.y - rhs.y)
     }
 
-    public static func *(lhs: Vector2, rhs: Vector2) -> Vector2 {
+    @inline(__always) public static func *(lhs: Vector2, rhs: Vector2) -> Vector2 {
         return Vector2(lhs.x * rhs.x, lhs.y * rhs.y)
     }
 
-    public static func *(lhs: Vector2, rhs: Scalar) -> Vector2 {
+    @inline(__always) public static func *(lhs: Vector2, rhs: Scalar) -> Vector2 {
         return Vector2(lhs.x * rhs, lhs.y * rhs)
     }
 
-    public static func *(lhs: Vector2, rhs: Matrix3) -> Vector2 {
+    @inline(__always) public static func *(lhs: Vector2, rhs: Matrix3) -> Vector2 {
 
         return Vector2(
             lhs.x * rhs.m11 + lhs.y * rhs.m21 + rhs.m31,
@@ -303,19 +303,19 @@ extension Vector2 {
         )
     }
 
-    public static func /(lhs: Vector2, rhs: Vector2) -> Vector2 {
+    @inline(__always) public static func /(lhs: Vector2, rhs: Vector2) -> Vector2 {
         return Vector2(lhs.x / rhs.x, lhs.y / rhs.y)
     }
 
-    public static func /(lhs: Vector2, rhs: Scalar) -> Vector2 {
+    @inline(__always) public static func /(lhs: Vector2, rhs: Scalar) -> Vector2 {
         return Vector2(lhs.x / rhs, lhs.y / rhs)
     }
 
-    public static func ==(lhs: Vector2, rhs: Vector2) -> Bool {
+    @inline(__always) public static func ==(lhs: Vector2, rhs: Vector2) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y
     }
     
-    public static func ~==(lhs: Vector2, rhs: Vector2) -> Bool {
+    @inline(__always) public static func ~==(lhs: Vector2, rhs: Vector2) -> Bool {
         return lhs.x ~== rhs.x && lhs.y ~== rhs.y
     }
 }
@@ -376,11 +376,11 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
         }
     }
     
-    public init(_ x: Scalar, _ y: Scalar, _ z: Scalar) {
+    @inline(__always) public init(_ x: Scalar, _ y: Scalar, _ z: Scalar) {
         self.init(x: x, y: y, z: z)
     }
     
-    public init(_ v: [Scalar]) {
+    @inline(__always) public init(_ v: [Scalar]) {
         
         assert(v.count == 3, "array must contain 3 elements, contained \(v.count)")
         
@@ -389,17 +389,17 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
         z = v[2]
     }
 
-    public init(_ v4:Vector4) {
+    @inline(__always) public init(_ v4:Vector4) {
         x = v4.x
         y = v4.y
         z = v4.z
     }
     
-    public func dot(_ v: Vector3) -> Scalar {
+    @inline(__always) public func dot(_ v: Vector3) -> Scalar {
         return x * v.x + y * v.y + z * v.z
     }
     
-    public func cross(_ v: Vector3) -> Vector3 {
+    @inline(__always) public func cross(_ v: Vector3) -> Vector3 {
         return Vector3(y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x)
     }
     
@@ -412,7 +412,7 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
         return self / sqrt(lengthSquared)
     }
 
-    public func interpolated(with v: Vector3, t: Scalar) -> Vector3 {
+    @inline(__always) public func interpolated(with v: Vector3, t: Scalar) -> Vector3 {
         return self + (v - self) * t
     }
 
@@ -482,32 +482,32 @@ extension Vector3: Equatable, Hashable, CustomStringConvertible {
     }
 }
 extension Vector3 {
-    public static prefix func -(v: Vector3) -> Vector3 {
+    @inline(__always) public static prefix func -(v: Vector3) -> Vector3 {
         return Vector3(-v.x, -v.y, -v.z)
     }
 
-    public static func +(lhs: Vector3, rhs: Vector3) -> Vector3 {
+    @inline(__always) public static func +(lhs: Vector3, rhs: Vector3) -> Vector3 {
         return Vector3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z)
     }
 
-    public static func -(lhs: Vector3, rhs: Vector3) -> Vector3 {
+    @inline(__always) public static func -(lhs: Vector3, rhs: Vector3) -> Vector3 {
         return Vector3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z)
     }
 
-    public static func *(lhs: Vector3, rhs: Vector3) -> Vector3 {
+    @inline(__always) public static func *(lhs: Vector3, rhs: Vector3) -> Vector3 {
         return Vector3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z)
     }
 
-    public static func *(lhs: Vector3, rhs: Scalar) -> Vector3 {
+    @inline(__always) public static func *(lhs: Vector3, rhs: Scalar) -> Vector3 {
         return Vector3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs)
     }
 
-    public static func *= (lhs:inout Vector3, rhs:Vector3) { lhs.x *= rhs.x; lhs.y *= rhs.y; lhs.z *= rhs.z }
-    public static func /= (lhs:inout Vector3, rhs:Vector3) { lhs.x /= rhs.x; lhs.y /= rhs.y; lhs.z /= rhs.z }
-    public static func += (lhs:inout Vector3, rhs:Vector3) { lhs.x += rhs.x; lhs.y += rhs.y; lhs.z += rhs.z }
-    public static func -= (lhs:inout Vector3, rhs:Vector3) { lhs.x -= rhs.x; lhs.y -= rhs.y; lhs.z -= rhs.z }
+    @inline(__always) public static func *= (lhs:inout Vector3, rhs:Vector3) { lhs.x *= rhs.x; lhs.y *= rhs.y; lhs.z *= rhs.z }
+    @inline(__always) public static func /= (lhs:inout Vector3, rhs:Vector3) { lhs.x /= rhs.x; lhs.y /= rhs.y; lhs.z /= rhs.z }
+    @inline(__always) public static func += (lhs:inout Vector3, rhs:Vector3) { lhs.x += rhs.x; lhs.y += rhs.y; lhs.z += rhs.z }
+    @inline(__always) public static func -= (lhs:inout Vector3, rhs:Vector3) { lhs.x -= rhs.x; lhs.y -= rhs.y; lhs.z -= rhs.z }
 
-    public static func *(lhs: Vector3, rhs: Matrix3) -> Vector3 {
+    @inline(__always) public static func *(lhs: Vector3, rhs: Matrix3) -> Vector3 {
         
         return Vector3(
             lhs.x * rhs.m11 + lhs.y * rhs.m21 + lhs.z * rhs.m31,
@@ -516,7 +516,7 @@ extension Vector3 {
         )
     }
 
-    public static func *(lhs: Vector3, rhs: Matrix4) -> Vector3 {
+    @inline(__always) public static func *(lhs: Vector3, rhs: Matrix4) -> Vector3 {
         
         return Vector3(
             lhs.x * rhs.m11 + lhs.y * rhs.m21 + lhs.z * rhs.m31 + rhs.m41,
@@ -533,19 +533,19 @@ extension Vector3 {
         return v + (uv * 2 * q.w) + (uuv * 2)
     }
 
-    public static func /(lhs: Vector3, rhs: Vector3) -> Vector3 {
+    @inline(__always) public static func /(lhs: Vector3, rhs: Vector3) -> Vector3 {
         return Vector3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z)
     }
 
-    public static func /(lhs: Vector3, rhs: Scalar) -> Vector3 {
+    @inline(__always) public static func /(lhs: Vector3, rhs: Scalar) -> Vector3 {
         return Vector3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs)
     }
 
-    public static func ==(lhs: Vector3, rhs: Vector3) -> Bool {
+    @inline(__always) public static func ==(lhs: Vector3, rhs: Vector3) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
     }
 
-    public static func ~==(lhs: Vector3, rhs: Vector3) -> Bool {
+    @inline(__always) public static func ~==(lhs: Vector3, rhs: Vector3) -> Bool {
         return lhs.x ~== rhs.x && lhs.y ~== rhs.y && lhs.z ~== rhs.z
     }
 }
@@ -622,7 +622,7 @@ extension Vector4: Equatable, Hashable {
         self.init(x: x, y: y, z: z, w: w)
     }
     
-    public init(_ v: [Scalar]) {
+    @inline(__always) public init(_ v: [Scalar]) {
         
         assert(v.count == 4, "array must contain 4 elements, contained \(v.count)")
         
@@ -632,14 +632,14 @@ extension Vector4: Equatable, Hashable {
         w = v[3]
     }
 
-    public init(_ v3:Vector3) {
+    @inline(__always) public init(_ v3:Vector3) {
         x = v3.x
         y = v3.y
         z = v3.z
         w = 1
     }
 
-    public func dot(_ v: Vector4) -> Scalar {
+    @inline(__always) public func dot(_ v: Vector4) -> Scalar {
         return x * v.x + y * v.y + z * v.z + w * v.w
     }
     
@@ -678,7 +678,7 @@ extension Vector4: Equatable, Hashable {
         return ret
     }
 
-    public func toReal() -> Vector4 {
+    @inline(__always) public func toReal() -> Vector4 {
         if w != 0 && w != 1 {
             return Vector4(x/w, y/w, z/w, 1)
         }
@@ -693,27 +693,27 @@ extension Vector4: Equatable, Hashable {
 
 extension Vector4 {
 
-    public static prefix func -(v: Vector4) -> Vector4 {
+    @inline(__always) public static prefix func -(v: Vector4) -> Vector4 {
         return Vector4(-v.x, -v.y, -v.z, -v.w)
     }
 
-    public static func +(lhs: Vector4, rhs: Vector4) -> Vector4 {
+    @inline(__always) public static func +(lhs: Vector4, rhs: Vector4) -> Vector4 {
         return Vector4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w)
     }
 
-    public static func -(lhs: Vector4, rhs: Vector4) -> Vector4 {
+    @inline(__always) public static func -(lhs: Vector4, rhs: Vector4) -> Vector4 {
         return Vector4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w)
     }
 
-    public static func *(lhs: Vector4, rhs: Vector4) -> Vector4 {
+    @inline(__always) public static func *(lhs: Vector4, rhs: Vector4) -> Vector4 {
         return Vector4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w)
     }
 
-    public static func *(lhs: Vector4, rhs: Scalar) -> Vector4 {
+    @inline(__always) public static func *(lhs: Vector4, rhs: Scalar) -> Vector4 {
         return Vector4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs)
     }
 
-    public static func *(lhs: Vector4, rhs: Matrix4) -> Vector4 {
+    @inline(__always) public static func *(lhs: Vector4, rhs: Matrix4) -> Vector4 {
         
         return Vector4(
             lhs.x * rhs.m11 + lhs.y * rhs.m21 + lhs.z * rhs.m31 + lhs.w * rhs.m41,
@@ -723,19 +723,19 @@ extension Vector4 {
         )
     }
 
-    public static func /(lhs: Vector4, rhs: Vector4) -> Vector4 {
+    @inline(__always) public static func /(lhs: Vector4, rhs: Vector4) -> Vector4 {
         return Vector4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w)
     }
 
-    public static func /(lhs: Vector4, rhs: Scalar) -> Vector4 {
+    @inline(__always) public static func /(lhs: Vector4, rhs: Scalar) -> Vector4 {
         return Vector4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs)
     }
 
-    public static func ==(lhs: Vector4, rhs: Vector4) -> Bool {
+    @inline(__always) public static func ==(lhs: Vector4, rhs: Vector4) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.w == rhs.w
     }
 
-    public static func ~==(lhs: Vector4, rhs: Vector4) -> Bool {
+    @inline(__always) public static func ~==(lhs: Vector4, rhs: Vector4) -> Bool {
         return lhs.x ~== rhs.x && lhs.y ~== rhs.y && lhs.z ~== rhs.z && lhs.w ~== rhs.w
     }
 }
@@ -754,7 +754,7 @@ extension Matrix3: Equatable, Hashable {
         return hash
     }
     
-    public init(_ m11: Scalar, _ m12: Scalar, _ m13: Scalar,
+    @inline(__always) public init(_ m11: Scalar, _ m12: Scalar, _ m13: Scalar,
         _ m21: Scalar, _ m22: Scalar, _ m23: Scalar,
         _ m31: Scalar, _ m32: Scalar, _ m33: Scalar) {
             
@@ -769,7 +769,7 @@ extension Matrix3: Equatable, Hashable {
             self.m33 = m33 // 8
     }
     
-    public init(scale: Vector2) {
+    @inline(__always) public init(scale: Vector2) {
         
         self.init(
             scale.x, 0, 0,
@@ -778,7 +778,7 @@ extension Matrix3: Equatable, Hashable {
         )
     }
     
-    public init(translation: Vector2) {
+    @inline(__always) public init(translation: Vector2) {
         
         self.init(
             1, 0, 0,
@@ -787,7 +787,7 @@ extension Matrix3: Equatable, Hashable {
         )
     }
     
-    public init(rotation radians: Scalar) {
+    @inline(__always) public init(rotation radians: Scalar) {
         
         let cs = cos(radians)
         let sn = sin(radians)
@@ -798,7 +798,7 @@ extension Matrix3: Equatable, Hashable {
         )
     }
     
-    public init(_ m: [Scalar]) {
+    @inline(__always) public init(_ m: [Scalar]) {
         
         assert(m.count == 9, "array must contain 9 elements, contained \(m.count)")
         
@@ -870,11 +870,11 @@ extension Matrix3 {
         )
     }
 
-    public static func *(lhs: Matrix3, rhs: Vector2) -> Vector2 {
+    @inline(__always) public static func *(lhs: Matrix3, rhs: Vector2) -> Vector2 {
         return rhs * lhs
     }
 
-    public static func *(lhs: Matrix3, rhs: Vector3) -> Vector3 {
+    @inline(__always) public static func *(lhs: Matrix3, rhs: Vector3) -> Vector3 {
         return rhs * lhs
     }
 
@@ -1029,7 +1029,7 @@ extension Matrix4: Equatable, Hashable, CustomStringConvertible {
         )
     }
     
-    public init(_ m: [Scalar]) {
+    @inline(__always) public init(_ m: [Scalar]) {
         
         assert(m.count == 16, "array must contain 16 elements, contained \(m.count)")
         
@@ -1147,11 +1147,11 @@ extension Matrix4: Equatable, Hashable, CustomStringConvertible {
         return adjugate * (1 / determinant)
     }
 
-    public func translate(_ t:Vector3) -> Matrix4 {
+    @inline(__always) public func translate(_ t:Vector3) -> Matrix4 {
         return self * Matrix4(translation: t)
     }
 
-    public func translate(_ t:CGPoint) -> Matrix4 {
+    @inline(__always) public func translate(_ t:CGPoint) -> Matrix4 {
         return self * Matrix4(translation: Vector3(t))
     }
 
@@ -1280,11 +1280,11 @@ extension Matrix4: Equatable, Hashable, CustomStringConvertible {
 
 extension Matrix4 {
 
-    public static prefix func -(m: Matrix4) -> Matrix4 {
+    @inline(__always) public static prefix func -(m: Matrix4) -> Matrix4 {
         return m.inverse
     }
 
-    public func multiply(_ other: Matrix4) -> Matrix4 {
+    @inline(__always) public func multiply(_ other: Matrix4) -> Matrix4 {
         return self * other
     }
 
@@ -1532,7 +1532,7 @@ extension Quaternion: Equatable, Hashable, CustomStringConvertible {
         }
     }
     
-    public init(_ v: [Scalar]) {
+    @inline(__always) public init(_ v: [Scalar]) {
         
         assert(v.count == 4, "array must contain 4 elements, contained \(v.count)")
         
@@ -1564,7 +1564,7 @@ extension Quaternion: Equatable, Hashable, CustomStringConvertible {
         return Vector3(pitch, yaw, roll)
     }
 
-    public func dot(_ v: Quaternion) -> Scalar {
+    @inline(__always) public func dot(_ v: Quaternion) -> Scalar {
         return x * v.x + y * v.y + z * v.z + w * v.w
     }
     
