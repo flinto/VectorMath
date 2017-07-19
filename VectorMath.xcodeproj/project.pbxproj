@@ -162,6 +162,7 @@
 				6E2D79421F1E929500E44FB2 /* Frameworks */,
 				6E2D79431F1E929500E44FB2 /* Headers */,
 				6E2D79441F1E929500E44FB2 /* Resources */,
+				6E666F271F1EF4DB00934543 /* Copy framework into Carthage folder */,
 			);
 			buildRules = (
 			);
@@ -275,6 +276,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6E666F271F1EF4DB00934543 /* Copy framework into Carthage folder */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy framework into Carthage folder";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = CarthageScripts/copy_framework.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6E2D79411F1E929500E44FB2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -333,6 +351,7 @@
 				INFOPLIST_FILE = VectorMath/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMath;
 				PRODUCT_NAME = VectorMath;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -359,6 +378,7 @@
 				INFOPLIST_FILE = VectorMath/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMath;
 				PRODUCT_NAME = VectorMath;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -540,7 +560,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = VectorMath/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMath;
 				PRODUCT_NAME = VectorMath;
@@ -573,7 +593,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = VectorMath/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMath;
 				PRODUCT_NAME = VectorMath;

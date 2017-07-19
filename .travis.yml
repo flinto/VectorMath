@@ -8,7 +8,7 @@ before_install:
 - brew outdated carthage || brew upgrade carthage
 script: xcodebuild test -scheme VectorMath_iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0'
 before_deploy:
-- ./script/build.sh --no-skip-current
+- ./CarthageScripts/build-static-framework.sh
 - carthage archive $FRAMEWORK_NAME
 deploy:
   provider: releases
