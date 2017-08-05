@@ -39,6 +39,11 @@ import CoreGraphics
 
 public typealias Scalar = CGFloat
 
+#if swift(>=4.0)
+//  Codable is already defined
+#else
+protocol Codable {}
+#endif
 public struct Vector2 : Codable {
     public var x: Scalar
     public var y: Scalar
@@ -146,6 +151,10 @@ extension Scalar {
      about half of this.
      */
     public static let actualMachineEpsilon = Scalar.ulpOfOne
+
+    fileprivate var sign: Scalar {
+        return self > 0 ? 1 : -1
+    }
 }
 
 infix operator ~==  : ComparisonPrecedence
@@ -1447,15 +1456,15 @@ extension Quaternion: Equatable, Hashable, CustomStringConvertible {
     }
     
     public var pitch: Scalar {
-        return atan2(2 * (y * z + w * x), w * w - x * x - y * y + z * z)
+        return asin(min(1, max(-1, 2 * (w * y - z * x))))
     }
     
     public var yaw: Scalar {
-        return asin(-2 * (x * z - w * y))
+        return atan2(2 * (w * z + x * y), 1 - 2 * (y * y + z * z))
     }
     
     public var roll: Scalar {
-        return atan2(2 * (x * y + w * z), w * w + x * x - y * y - z * z)
+        return atan2(2 * (w * x + y * z), 1 - 2 * (x * x + y * y))
     }
     
     public init(_ x: Scalar, _ y: Scalar, _ z: Scalar, _ w: Scalar) {
@@ -1471,69 +1480,36 @@ extension Quaternion: Equatable, Hashable, CustomStringConvertible {
     }
     
     public init(pitch: Scalar, yaw: Scalar, roll: Scalar) {
-        
-        let sy = sin(yaw * 0.5)
-        let cy = cos(yaw * 0.5)
-        let sz = sin(roll * 0.5)
-        let cz = cos(roll * 0.5)
-        let sx = sin(pitch * 0.5)
-        let cx = cos(pitch * 0.5)
-        
+
+        let t0 = cos(yaw * 0.5)
+        let t1 = sin(yaw * 0.5)
+        let t2 = cos(roll * 0.5)
+        let t3 = sin(roll * 0.5)
+        let t4 = cos(pitch * 0.5)
+        let t5 = sin(pitch * 0.5)
         self.init(
-            cy * cz * cx - sy * sz * sx,
-            sy * sz * cx + cy * cz * sx,
-            sy * cz * cx + cy * sz * sx,
-            cy * sz * cx - sy * cz * sx
+            t0 * t3 * t4 - t1 * t2 * t5,
+            t0 * t2 * t5 + t1 * t3 * t4,
+            t1 * t2 * t4 - t0 * t3 * t5,
+            t0 * t2 * t4 + t1 * t3 * t5
         )
     }
-    
+
     public init(rotationMatrix m: Matrix4) {
-        
-        let diagonal = m.m11 + m.m22 + m.m33 + 1
-        if diagonal > 0 {
-            
-            let scale = sqrt(diagonal) * 2
-            self.init(
-                (m.m32 - m.m23) / scale,
-                (m.m13 - m.m31) / scale,
-                (m.m21 - m.m12) / scale,
-                0.25 * scale
-            )
-            
-        } else if m.m11 > max(m.m22, m.m33) {
-            
-            let scale = sqrt(1 + m.m11 - m.m22 - m.m33) * 2
-            self.init(
-                0.25 * scale,
-                (m.m21 + m.m12) / scale,
-                (m.m13 + m.m31) / scale,
-                (m.m32 - m.m23) / scale
-            )
-            
-        } else if m.m22 > m.m33 {
-            
-            let scale = sqrt(1 + m.m22 - m.m11 - m.m33) * 2
-            self.init(
-                (m.m21 + m.m12) / scale,
-                0.25 * scale,
-                (m.m32 + m.m23) / scale,
-                (m.m13 - m.m31) / scale
-            )
-            
-        } else {
-            
-            let scale = sqrt(1 + m.m33 - m.m11 - m.m22) * 2
-            self.init(
-                (m.m13 + m.m31) / scale,
-                (m.m32 + m.m23) / scale,
-                0.25 * scale,
-                (m.m21 - m.m12) / scale
-            )
-        }
+        let x = sqrt(max(0, 1 + m.m11 - m.m22 - m.m33)) / 2
+        let y = sqrt(max(0, 1 - m.m11 + m.m22 - m.m33)) / 2
+        let z = sqrt(max(0, 1 - m.m11 - m.m22 + m.m33)) / 2
+        let w = sqrt(max(0, 1 + m.m11 + m.m22 + m.m33)) / 2
+        self.init(
+            x * (x * (m.m32 - m.m23)).sign,
+            y * (y * (m.m13 - m.m31)).sign,
+            z * (z * (m.m21 - m.m12)).sign,
+            w
+        )
     }
-    
+
     @inline(__always) public init(_ v: [Scalar]) {
-        
+
         assert(v.count == 4, "array must contain 4 elements, contained \(v.count)")
         
         x = v[0]

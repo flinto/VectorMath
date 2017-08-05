@@ -321,10 +321,33 @@ class QuaternionTests: XCTestCase {
         XCTAssertEqual(q.z, 1)
         XCTAssert(q.w ~== 0)
     }
+
+
+    func testEulerConversion() {
+
+        var quat = Quaternion(pitch: Scalar.quarterPi, yaw: 0, roll: 0)
+        XCTAssertTrue(quat.pitch ~== Scalar.quarterPi)
+        quat = Quaternion(pitch: 0, yaw: Scalar.quarterPi, roll: 0)
+        XCTAssertTrue(quat.yaw ~== Scalar.quarterPi)
+        quat = Quaternion(pitch: 0, yaw: 0, roll: Scalar.quarterPi)
+        XCTAssertTrue(quat.roll ~== Scalar.quarterPi)
+
+        quat = Quaternion(pitch: 0.12334412, yaw: 1.3521468, roll: -0.53435323)
+        let (pitch, yaw, roll) = quat.toPitchYawRoll()
+        let quat2Ref = Quaternion(pitch: pitch, yaw: yaw, roll: roll)
+        XCTAssertTrue(quat ~== quat2Ref)
+    }
+
+    func testMatrix4Conversion() {
+
+        let quat = Quaternion(rotationMatrix: Matrix4.identity)
+        let matr = Matrix4(quaternion: quat)
+        XCTAssertTrue(matr ~= .identity)
+    }
 }
 
 class PerformanceTests: XCTestCase {
-    
+
     func testMatrix3MultiplicationPerformance() {
         
         let a = Matrix3(rotation: .halfPi)
