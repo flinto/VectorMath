@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E2D794A1F1E929500E44FB2 /* VectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E2D79481F1E929500E44FB2 /* VectorMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E2D794E1F1E930000E44FB2 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87CF9F1F19C29E007F5A63 /* VectorMath.swift */; };
 		6E4BA9E01F1E96F4000E5C34 /* VectorMath+Quartz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87CFA01F19C29E007F5A63 /* VectorMath+Quartz.swift */; };
 		6E4BA9E11F1E96F4000E5C34 /* VectorMath+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6D48D1F19D1E6002CD441 /* VectorMath+Array.swift */; };
 		6E5D8B5C1F19DB0100E2928B /* VectorMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED6D4941F19D23C002CD441 /* VectorMath.framework */; };
+		6E7A5C701F467C5800EEBA2D /* VectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E87CF9E1F19C29E007F5A63 /* VectorMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6ED6D4981F19D23C002CD441 /* VectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ED6D4961F19D23C002CD441 /* VectorMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6ED6D49C1F19D259002CD441 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87CF9F1F19C29E007F5A63 /* VectorMath.swift */; };
 		6ED6D49D1F19D259002CD441 /* VectorMath+Quartz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87CFA01F19C29E007F5A63 /* VectorMath+Quartz.swift */; };
@@ -20,19 +20,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6E5D8B5D1F19DB0100E2928B /* PBXContainerItemProxy */ = {
+		6E7A5C711F467CCB00EEBA2D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6E87CF811F19C1C1007F5A63 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6ED6D4931F19D23C002CD441;
-			remoteInfo = VectorMathiOS;
+			remoteGlobalIDString = 6E2D79451F1E929500E44FB2;
+			remoteInfo = VectorMath_macOS;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6E2D79461F1E929500E44FB2 /* VectorMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VectorMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E2D79481F1E929500E44FB2 /* VectorMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorMath.h; sourceTree = "<group>"; };
-		6E2D79491F1E929500E44FB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E5D8B571F19DB0100E2928B /* VectorMathTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VectorMathTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E87CF9D1F19C29E007F5A63 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E87CF9E1F19C29E007F5A63 /* VectorMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorMath.h; sourceTree = "<group>"; };
@@ -72,15 +70,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E2D79471F1E929500E44FB2 /* VectorMath */ = {
-			isa = PBXGroup;
-			children = (
-				6E2D79481F1E929500E44FB2 /* VectorMath.h */,
-				6E2D79491F1E929500E44FB2 /* Info.plist */,
-			);
-			path = VectorMath;
-			sourceTree = "<group>";
-		};
 		6E5D8B581F19DB0100E2928B /* VectorMathTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +85,6 @@
 				6E87CF8C1F19C1C1007F5A63 /* VectorMath */,
 				6ED6D4951F19D23C002CD441 /* VectorMathiOS */,
 				6E5D8B581F19DB0100E2928B /* VectorMathTests */,
-				6E2D79471F1E929500E44FB2 /* VectorMath */,
 				6E87CF8B1F19C1C1007F5A63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -139,7 +127,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E2D794A1F1E929500E44FB2 /* VectorMath.h in Headers */,
+				6E7A5C701F467C5800EEBA2D /* VectorMath.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +172,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				6E5D8B5E1F19DB0100E2928B /* PBXTargetDependency */,
+				6E7A5C721F467CCB00EEBA2D /* PBXTargetDependency */,
 			);
 			name = VectorMathTests;
 			productName = VectorMathiOSTests;
@@ -226,6 +214,7 @@
 					6E5D8B561F19DB0100E2928B = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Manual;
 					};
 					6ED6D4931F19D23C002CD441 = {
 						CreatedOnToolsVersion = 9.0;
@@ -325,10 +314,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6E5D8B5E1F19DB0100E2928B /* PBXTargetDependency */ = {
+		6E7A5C721F467CCB00EEBA2D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6ED6D4931F19D23C002CD441 /* VectorMath_iOS */;
-			targetProxy = 6E5D8B5D1F19DB0100E2928B /* PBXContainerItemProxy */;
+			target = 6E2D79451F1E929500E44FB2 /* VectorMath_macOS */;
+			targetProxy = 6E7A5C711F467CCB00EEBA2D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -356,7 +345,7 @@
 				PRODUCT_NAME = VectorMath;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -383,7 +372,7 @@
 				PRODUCT_NAME = VectorMath;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -393,17 +382,16 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = VectorMathiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = VectorMath/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMathiOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -414,16 +402,15 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = VectorMathiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = VectorMath/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flinto.VectorMathiOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -477,7 +464,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -530,7 +518,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -567,7 +556,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -600,7 +589,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
